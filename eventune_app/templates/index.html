@@ -10,13 +10,19 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <nav class="navbar alert-success justify-content-between">
+    <nav class="navbar navbar-light bg-light justify-content-between">
         <div class="container">
-            <h4>Hello {{user.f_name}}! These are the job details!</h4>
-            <h1>test test</h1>
-            <a class="nav-link btn btn-light btn-outline-info btn-sm" href="/dashboard">Dashboard</a>
-            <a href="/logout" class="nav-link btn-outline-danger">Log Out</a>
+            {% load static %}
+            <a class="navbar-brand" href="#"><img src="{% static "images/logo.png" %}" alt="eventune logo" class="navbar_logo"></a>
+            <div>
+                <a href="#signup" class="btn btn-dark">Sign up</a>
+                <a href="#login" class="btn btn-dark">Log in</a>
+            </div>
         </div>
     </nav>
+    <div class="container">
+        {% load static %}
+        <img src="{% static "images/login_img.jpg" %}" alt="people in a concert" class="login-img">
+    </div>
 </body>
 </html>
