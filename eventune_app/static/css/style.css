@@ -1,11 +1,88 @@
+/* font-family: 'Fjalla One', ;
+font-family: 'Gothic A1', ;
+font-family: 'Philosopher', ; */
+* {
+/*  outline: 2px solid red; */
+    font-family: 'Gothic A1';
+}
+
+.body {
+    background-color: black;
+}
+
+.navbar-rl {
+    background-color: white;
+}
+
 .navbar_logo {
     height: 50px;
 }
 
-.login-img {
-    width: 90%;
-
-
 .edmpic {
     width: 75%;
+}
+
+.bck_img {
+    background: url("../images/login_img.jpg");
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 650px;
+    margin: 20px 0;
+    text-align: center;
+    padding-top: 250px;
+    color: white;
+}
+
+.bck_img h1 {
+    font-size: 60px;
+    font-weight: 900;
+}
+
+.bck_img p {
+    font-size: 30px;
+}
+
+.cards-container {
+    background-color: white;
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.card-rl {
+    border: none;
+    text-align: center;
+}
+
+.card-rl p {
+    font-size: 25px;
+    color: gray;
+}
+
+.icon-rl {
+    height: 130px;
+    display: block;
+    margin: auto;
+}
+
+.reg-log {
+    padding-left: 210px;
+    color: white;
+    padding-top: 80px;
+    background-color: black;
+    margin-bottom: 80px;
+}
+
+.left-side {
+    margin-left: 300px;
+}
+
+.concerts {
+    display: inline-block;
+    width: 23%;
+    margin: 5px;
+}
+
+.background {
+    background-color: black;
+    height: 100%;
 }

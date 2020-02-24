@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,13 +8,18 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     {% load static %}
+    <link
+        href="https://fonts.googleapis.com/css?family=Fjalla+One|Gothic+A1:100,200,300,400,500,600,700,800,900|Philosopher:400,400i,700,700i&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
-<body>
-    <nav class="navbar navbar-light bg-light justify-content-between">
+
+<body class="body">
+    <nav class="navbar navbar-rl justify-content-between">
         <div class="container">
             {% load static %}
-            <a class="navbar-brand" href="#"><img src="{% static "images/logo.png" %}" alt="eventune logo" class="navbar_logo"></a>
+            <a class="navbar-brand" href="#"><img src="{% static "images/logo.png" %}" alt="eventune logo"
+                    class="navbar_logo"></a>
             <div>
                 <a href="#signup" class="btn btn-dark">Sign up</a>
                 <a href="#login" class="btn btn-dark">Log in</a>
@@ -21,8 +27,96 @@
         </div>
     </nav>
     <div class="container">
-        {% load static %}
-        <img src="{% static "images/login_img.jpg" %}" alt="people in a concert" class="login-img">
+        <div class="bck_img">
+            <h1>Find the best concerts in your Area</h1>
+            <p>Register and have access to the best selection of concerts close to you.</p>
+            <a href="#signup" class="btn btn-danger">Sign up</a>
+            <a href="#login" class="btn btn-light btn-outline-dark">Log in</a>
+        </div>
     </div>
+    <div class="cards-container">
+        <div class="container">
+            <div class="card-deck">
+                <div class="card mb-4 box-shadow card-rl">
+                    <img src="{% static "images/mic.png" %}" class="icon-rl" alt="concert">
+                    <div class="card-body">
+                        <p class="card-text">Track your favorite artists</p>
+                    </div>
+                </div>
+                <div class="card mb-4 box-shadow card-rl">
+                    <img src="{% static "images/party-icon.png" %}" class="icon-rl" alt="concert">
+                    <div class="card-body">
+                        <p class="card-text">Share and invite your friends to have fun with you</p>
+                    </div>
+                </div>
+                <div class="card mb-4 box-shadow card-rl">
+                    <img src="{% static "images/checkoff.png" %}" class="icon-rl" alt="concert">
+                    <div class="card-body">
+                        <p class="card-text">Never miss another concert</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row reg-log">
+        <div class="col-6">
+            <div class="col-8">
+                <h2>Registration</h2>
+                <form action="/registration" method="POST">
+                    {%csrf_token%}
+                    <div class="form_group">
+                        <label for="f_name">First Name</label>
+                        <input name="f_name" type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="l_name">Last Name</label>
+                        <input name="l_name" type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input name="email" type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="pw">Password</label>
+                        <input name="pw" type="password" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="pw_c">Confirm Password</label>
+                        <input name="pw_c" type="password" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-outline-warning btn-block">Register</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="col-8">
+                <h2>Login</h2>
+                <form action="/login" method="POST">
+                    {%csrf_token%}
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input name="email" type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="pw">Password</label>
+                        <input name="pw" type="password" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-outline-warning btn-block">Log In</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <footer class="navbar navbar-light bg-light justify-content-between">
+        <div class="container">
+            {% load static %}
+            <a class="navbar-brand" href="#"><img src="{% static "images/logo.png" %}" alt="eventune logo"
+                    class="navbar_logo"></a>
+            <div>
+                <form class="form-inline">
+            </div>
+          
+        </div>
+    </footer>
 </body>
+
 </html>
