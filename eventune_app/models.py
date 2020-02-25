@@ -27,6 +27,7 @@ class User(models.Model):
     city = models.CharField(max_length=255)
     email = models.CharField(max_length=255)
     password = models.CharField(max_length=255)
+    profile_image = models.ImageField(upload_to=eventune, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = UserManager()
@@ -34,4 +35,6 @@ class User(models.Model):
 class Event(models.Model):
     title = models.CharField(max_length=255)
     date = models.CharField(max_length=255)
-    users = models.ForeignKey(User, related_name='events_interested', on_delete=models.CASCADE)
+    users = models.ForeignKey(User, related_name='events', on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
