@@ -36,6 +36,11 @@ def login(request):
     messages.error(request,'passwords dont match or invalid email!')
     return redirect('/')
 
+def logout(request):
+    if 'user_id' in request.session:
+        del request.session['user_id']
+    return redirect('/')
+
 def home(request):
     if 'user_id' in request.session:
         context = {

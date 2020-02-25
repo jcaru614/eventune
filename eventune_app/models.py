@@ -27,14 +27,16 @@ class User(models.Model):
     city = models.CharField(max_length=255)
     email = models.CharField(max_length=255)
     password = models.CharField(max_length=255)
-    # profile_image = models.ImageField(upload_to=eventune, blank=True, null=True)
+    profile_image = models.TextField(default='some profile pic')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = UserManager()
 
 class Event(models.Model):
-    title = models.CharField(max_length=255)
+    title = models.TextField()
     date = models.CharField(max_length=255)
     users = models.ForeignKey(User, related_name='events', on_delete=models.CASCADE)
+    more_info = models.TextField(default='more info')
+    picture = models.TextField(default='some picture')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
