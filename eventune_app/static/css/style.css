@@ -88,9 +88,10 @@ body {
     height:150px;
 }
 .concerts button {
+
     position:absolute;
     bottom:15px;
-    left:15px;
+    right:15px;
 }
 .background {
     background-color: black;

@@ -1,12 +1,14 @@
 $(document).ready(function(){
    $.ajax({
       type: "GET",
-      url: "https://app.ticketmaster.com/discovery/v2/events.json?size=8&apikey=V39QrEGIiAS8Nin2Zy3pJU8nJBNoiFNm",
+      url: "https://app.ticketmaster.com/discovery/v2/events.json?size=40&apikey=V39QrEGIiAS8Nin2Zy3pJU8nJBNoiFNm",
       async: true,
       dataType: "json",
       success: function (json) {
+         console.log('#'*50)
          console.log(json);
          console.log(json._embedded.events)
+         console.log('#'*50)
          var htmlString = ""
          for (var i = 0; i < json._embedded.events.length; i++) {
             var events = (json._embedded.events[i])
@@ -26,7 +28,7 @@ $(document).ready(function(){
       var keyword = $('#searchparam').val(); //$('#keyword').value; // get keyword from form in var
       $.ajax({
          type: "GET",
-         url: "https://app.ticketmaster.com/discovery/v2/events.json?size=4&keyword=" + keyword + "&apikey=V39QrEGIiAS8Nin2Zy3pJU8nJBNoiFNm",
+         url: "https://app.ticketmaster.com/discovery/v2/events.json?&keyword=" + keyword + "&apikey=V39QrEGIiAS8Nin2Zy3pJU8nJBNoiFNm",
          async: true,
          method: 'post',
          dataType: "json",
