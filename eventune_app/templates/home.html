@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     {% load static %}
+    <link
+        href="https://fonts.googleapis.com/css?family=Fjalla+One|Gothic+A1:100,200,300,400,500,600,700,800,900|Philosopher:400,400i,700,700i&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
@@ -15,19 +18,22 @@
 
 <body>
     <!-- nav bar -->
-    <nav class="navbar navbar-light bg-light justify-content-between">
+    <nav class="navbar navbar-rl justify-content-between">
         <div class="container">
             {% load static %}
-            <a class="navbar-brand" href="#"><img src="{% static 'images/logo.png' %}" alt="eventune logo"
-                    class="navbar_logo"></a>
-            <form id="form" action="/results" method="POST" class="form-inline left-side">
+            <a href="/home"><img src="{% static 'images/logo.png' %}" alt="eventune logo" class="navbar_logo"></a>
+            <form class="form-inline left-side">
                 {%csrf_token%}
-                <!-- <select name="option" id=""> <option value="artist">Artist</option> <option
-                    value="zipcode">Zipcode</option> </select> -->
-                <input id="searchparam" name="keyword" type="text" placeholder="Find events">
-                <button class="btn btn-sm btn-outline-secondary" type="submit">Search</button>
+                <input id="searchparam" name="keyword" class="form-control mr-sm-2" type="text"
+                    placeholder="Find events">
+                <button class="btn btn-outline-dark" type="submit">Search</button>
             </form>
-            <p>User Name</p>
+            <select class="btn btn-dark big-font">
+                <option selected disabled>User Name</option>
+                <option><a href="/profile">My Profile</a></option>
+                <option><a href="/interested">My Events</a></option>
+                <option><a href="/logout">Log Out</a></option>
+            </select>
         </div>
     </nav>
     <!-- body -->
@@ -47,7 +53,7 @@
         $(document).ready(function () {
             $.ajax({
                 type: "GET",
-                url: "https://app.ticketmaster.com/discovery/v2/events.json?size=40&apikey=V39QrEGIiAS8Nin2Zy3pJU8nJBNoiFNm",
+                url: "https://app.ticketmaster.com/discovery/v2/events.json?size=42&apikey=V39QrEGIiAS8Nin2Zy3pJU8nJBNoiFNm",
                 async: true,
                 dataType: "json",
                 success: function (json) {
@@ -56,8 +62,12 @@
                     var htmlString = ""
                     for (var i = 0; i < json._embedded.events.length; i++) {
                         var events = (json._embedded.events[i])
+                        for (var j = 0; j < events.images.length; j++) {
+                            if (events.images[j]['width'] >= 1024)
+                                var img = events.images[j].url
+                        }
                         console.log(events)
-                        htmlString += "<div class='card concerts'> <img src='" + json._embedded.events[i].images[0].url + "' class='card-img-top' /> <div class='card-body'> <p class='card-text'>" + json._embedded.events[i].name + "</p> <p class='card-text'>" + json._embedded.events[i].dates.start['localDate'] + "</p> <a href='"+json._embedded.events[i].url +"'> More Info </a> <button type='button' class='btn btn btn-outline-warning'>Interested</button> </div> </div> "
+                        htmlString += "<div class='card concerts'> <img src='" + img + "' class='card-img-top' /> <div class='card-body'> <p class='card-text'>" + json._embedded.events[i].name + "</p> <p class='card-text'>" + json._embedded.events[i].dates.start['localDate'] + "</p> <a href='" + json._embedded.events[i].url + "' class='btn btn-info m-info'> More Info </a> <button type='button' class='btn btn-warning btn-interes'>Interested</button> </div> </div> "
                     }
                     console.log(htmlString)
                     $(".main-container").html(htmlString)
@@ -77,7 +87,11 @@
                         var htmlString = ""
                         for (var i = 0; i < json._embedded.events.length; i++) {
                             var events = (json._embedded.events[i])
-                            htmlString += "<div class='card concerts'> <img src='" + json._embedded.events[i].images[0].url + "' class='card-img-top' /> <div class='card-body'> <p class='card-text'>" + json._embedded.events[i].name + "</p> <p class='card-text'>" + json._embedded.events[i].dates.start['localDate'] + "</p> <a href='"+json._embedded.events[i].url +"'> More Info </a> <button type='button' class='btn btn btn-outline-warning'>Interested</button> </div> </div> "
+                            for (var j = 0; j < events.images.length; j++) {
+                                if (events.images[j]['width'] >= 1024)
+                                    var img = events.images[j].url
+                            }
+                            htmlString += "<div class='card concerts'> <img src='" + img + "' class='card-img-top' /> <div class='card-body'> <p class='card-text'>" + json._embedded.events[i].name + "</p> <p class='card-text'>" + json._embedded.events[i].dates.start['localDate'] + "</p> <a href='" + json._embedded.events[i].url + "' class='btn btn-info m-info'> More Info </a> <button type='button' class='btn btn btn-warning btn-interes'>Interested</button> </div> </div> "
                         }
                         $(".main-container").html(htmlString)
                     })

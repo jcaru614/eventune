@@ -2,7 +2,6 @@
 font-family: 'Gothic A1', ;
 font-family: 'Philosopher', ; */
 * {
-/*  outline: 2px solid red; */
     font-family: 'Gothic A1';
 }
 
@@ -16,6 +15,10 @@ body {
 
 .navbar_logo {
     height: 50px;
+}
+
+.big-font {
+    font-size: 20px;
 }
 
 .edmpic {
@@ -78,22 +81,42 @@ body {
 
 .concerts {
     display: inline-block;
-    width: 23%;
-    margin: 5px;
-    height: 300px;
+    width: 350px;
+    margin: 15px 10px 0 7px;
+    height: 400px;
     vertical-align: top;
     position:relative;
 }
-.concerts img {
-    height:150px;
-}
-.concerts button {
 
+.concerts img {
+    height:200px;
+    background-color: black;
+}
+
+.concerts p {
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+}
+
+.concerts .btn-interes {
     position:absolute;
     bottom:15px;
     right:15px;
 }
-.background {
-    background-color: black;
-    height: 100%;
+
+.concerts .m-info {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+
+}
+
+footer {
+    margin-top: 20px;
+    width: 100%;
+    /* height: 2.5rem; */
+}
+section {
+    min-height:490px;
 }
