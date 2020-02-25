@@ -27,7 +27,7 @@ class User(models.Model):
     city = models.CharField(max_length=255)
     email = models.CharField(max_length=255)
     password = models.CharField(max_length=255)
-    profile_image = models.ImageField(upload_to=eventune, blank=True, null=True)
+    # profile_image = models.ImageField(upload_to=eventune, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = UserManager()
