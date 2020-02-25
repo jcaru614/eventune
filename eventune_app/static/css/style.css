@@ -6,7 +6,7 @@ font-family: 'Philosopher', ; */
     font-family: 'Gothic A1';
 }
 
-.body {
+body {
     background-color: black;
 }
 
@@ -80,8 +80,18 @@ font-family: 'Philosopher', ; */
     display: inline-block;
     width: 23%;
     margin: 5px;
+    height: 300px;
+    vertical-align: top;
+    position:relative;
 }
-
+.concerts img {
+    height:150px;
+}
+.concerts button {
+    position:absolute;
+    bottom:15px;
+    left:15px;
+}
 .background {
     background-color: black;
     height: 100%;

@@ -8,6 +8,8 @@
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
     <title>evenTune</title>
 </head>
 
@@ -16,93 +18,75 @@
     <nav class="navbar navbar-light bg-light justify-content-between">
         <div class="container">
             {% load static %}
-            <a class="navbar-brand" href="#"><img src="{% static "images/logo.png" %}" alt="eventune logo"class="navbar_logo"></a>
-            <div>
-                <form class="form-inline left-side">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Enter zip code" aria-label="Search">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Find events" aria-label="Search">
-                    <button class="btn btn-sm btn-outline-secondary" type="submit">Search</button>
-                    <a class="nav-link" href="#">User Name</a>
-            </div>
-            <div>
-            </div>
+            <a class="navbar-brand" href="#"><img src="{% static 'images/logo.png' %}" alt="eventune logo"
+                    class="navbar_logo"></a>
+            <form id="form" action="/results" method="POST" class="form-inline left-side">
+                {%csrf_token%}
+                <!-- <select name="option" id=""> <option value="artist">Artist</option> <option
+                    value="zipcode">Zipcode</option> </select> -->
+                <input id="searchparam" name="keyword" type="text" placeholder="Find events">
+                <button class="btn btn-sm btn-outline-secondary" type="submit">Search</button>
+            </form>
+            <p>User Name</p>
+        </div>
     </nav>
     <!-- body -->
-    <section>
-    <div class="background">
-        <div class="container">
-            <div class="card concerts">
-                <img src="{% static "images/edmcrowd.jpg" %}" class="card-img-top" alt="concert">
-                <div class="card-body">
-                    <p class="card-text">Friday June 12 2020 @ Bill Graham Civic Center, San Francisco,CA,US</p>
-                    <button type="button interested" class="btn btn btn-outline-warning ">Interested</button>
-                </div>
-            </div>
-            <div class="card concerts">
-                <img src="{% static "images/edmcrowd.jpg" %}" class="card-img-top" alt="concert">
-                <div class="card-body">
-                    <p class="card-text">Friday June 12 2020 @ Bill Graham Civic Center, San Francisco, CA, US</p>
-                    <button type="button interested" class="btn btn btn-outline-warning ">Interested</button>
-                </div>
-            </div>
-            <div class="card concerts">
-                <img src="{% static "images/edmcrowd.jpg" %}" class="card-img-top" alt="concert">
-                <div class="card-body">
-                    <p class="card-text">Friday June 12 2020 @ Bill Graham Civic Center, San Francisco, CA, US</p>
-                    <button type="button interested" class="btn btn btn-outline-warning ">Interested</button>
-                </div>
-            </div>
-            <div class="card concerts">
-                <img src="{% static "images/edmcrowd.jpg" %}" class="card-img-top" alt="concert">
-                <div class="card-body">
-                    <p class="card-text">Friday June 12 2020 @ Bill Graham Civic Center, San Francisco, CA, US</p>
-                    <button type="button interested" class="btn btn btn-outline-warning ">Interested</button>
-                </div>
-            </div>
-            <div class="card concerts">
-                <img src="{% static "images/edmcrowd.jpg" %}" class="card-img-top" alt="concert">
-                <div class="card-body">
-                    <p class="card-text">Friday June 12 2020 @ Bill Graham Civic Center, San Francisco, CA, US</p>
-                    <button type="button interested" class="btn btn btn-outline-warning ">Interested</button>
-                </div>
-            </div>
-            <div class="card concerts">
-                <img src="{% static "images/edmcrowd.jpg" %}" class="card-img-top" alt="concert">
-                <div class="card-body">
-                    <p class="card-text">Friday June 12 2020 @ Bill Graham Civic Center, San Francisco, CA, US</p>
-                    <button type="button interested" class="btn btn btn-outline-warning ">Interested</button>
-                </div>
-            </div>
-            <div class="card concerts">
-                <img src="{% static "images/edmcrowd.jpg" %}" class="card-img-top" alt="concert">
-                <div class="card-body">
-                    <p class="card-text">Friday June 12 2020 @ Bill Graham Civic Center, San Francisco, CA, US</p>
-                    <button type="button interested" class="btn btn btn-outline-warning ">Interested</button>
-                </div>
-            </div>
-            <div class="card concerts">
-                <img src="{% static "images/edmcrowd.jpg" %}" class="card-img-top" alt="concert">
-                <div class="card-body">
-                    <p class="card-text">Friday June 12 2020 @ Bill Graham Civic Center, San Francisco, CA, US</p>
-                    <button type="button interested" class="btn btn btn-outline-warning ">Interested</button>
-                </div>
-            </div>
-        
-        </div>
-    </div>
-</section>
 
-<footer class="navbar navbar-light bg-light justify-content-between">
-    <div class="container">
-        {% load static %}
-        <a class="navbar-brand" href="#"><img src="{% static "images/logo.png" %}" alt="eventune logo"
-                class="navbar_logo"></a>
-        <div>
-            <form class="form-inline">
+    <section>
+        <div class="container main-container"></div>
+    </section>
+
+    <footer class="navbar navbar-light bg-light justify-content-between">
+        <div class="container">
+            {% load static %}
+            <a class="navbar-brand" href="#"><img src="{% static 'images/logo.png' %}" alt="eventune logo"
+                    class="navbar_logo"></a>
         </div>
-      
-    </div>
-</footer>
+    </footer>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                type: "GET",
+                url: "https://app.ticketmaster.com/discovery/v2/events.json?size=8&apikey=V39QrEGIiAS8Nin2Zy3pJU8nJBNoiFNm",
+                async: true,
+                dataType: "json",
+                success: function (json) {
+                    console.log(json);
+                    console.log(json._embedded.events)
+                    var htmlString = ""
+                    for (var i = 0; i < json._embedded.events.length; i++) {
+                        var events = (json._embedded.events[i])
+                        console.log(events)
+                        htmlString += "<div class='card concerts'> <img src='" + json._embedded.events[i].images[0].url + "' class='card-img-top' /> <div class='card-body'> <p class='card-text'>" + json._embedded.events[i].name + "</p> <button type='button' class='btn btn btn-outline-warning'>Interested</button> </div> </div> "
+                    }
+                    console.log(htmlString)
+                    $(".main-container").html(htmlString)
+                },
+                error: function (xhr, status, err) {
+                }
+            });
+            //  search  // %20 for spaces in api url
+
+            $('form').submit(function (e) {
+                e.preventDefault();
+                var keyword = $('#searchparam').val(); //$('#keyword').value; // get keyword from form in var
+                console.log(keyword);
+                $.get("https://app.ticketmaster.com/discovery/v2/events.json?size=4&keyword=" + keyword + "&apikey=V39QrEGIiAS8Nin2Zy3pJU8nJBNoiFNm",
+                    function (json) {
+                        console.log(json);
+                        var htmlString = ""
+                        for (var i = 0; i < json._embedded.events.length; i++) {
+                            var events = (json._embedded.events[i])
+                            htmlString += "<div class='card concerts'> <img src='" + json._embedded.events[i].images[0].url + "' class='card-img-top' /> <div class='card-body'> <p class='card-text'>" + json._embedded.events[i].name + "</p> <button type='button' class='btn btn btn-outline-warning'>Interested</button> </div> </div> "
+                        }
+                        $(".main-container").html(htmlString)
+                    })
+            })
+
+        })
+
+
+    </script>
 </body>
 
 </html>
