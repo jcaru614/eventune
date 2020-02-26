@@ -74,7 +74,7 @@ footer p {
     font-size: 30px;
 }
 
-/* *** Cards styles *** */
+/* *** Card styles *** */
 
 .cards-container {
     background-color: white;
@@ -178,4 +178,24 @@ section {
     margin-top: 80px;
 }
 
+/* *** MY EVENTS PAGE *** */
 
+/* *** Events display styles *** */
+
+.me-list {
+    color: white;
+    padding: 50px;
+}
+
+.me-display {
+    padding-top: 30px;
+}
+
+.me-img {
+    height: 200px;
+    margin-right: 30px;
+}
+
+.me-info {
+    display: inline-block;
+}
