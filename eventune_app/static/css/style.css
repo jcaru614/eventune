@@ -174,8 +174,12 @@ section {
     margin: 20px 40px;
 }
 
+.add-pro-pic {
+    margin-top: 40px;
+}
+
 .delete-pro {
-    margin-top: 80px;
+    margin-top: 40px;
 }
 
 /* *** MY EVENTS PAGE *** */

@@ -5,6 +5,8 @@ import bcrypt
 
 
 def index(request):
+    if 'user_id' in request.session:
+        return redirect('/home')
     return render(request, 'index.html')
 
 def registration(request):
@@ -24,7 +26,7 @@ def registration(request):
         new_user = User.objects.create(f_name=request.POST['f_name'], l_name=request.POST['l_name'], email=request.POST['email'], password=pw_hash, city=request.POST['city'])
         user_id = new_user.id
         request.session['user_id'] = user_id
-        return redirect('/home')
+        return redirect('/')
     
 def login(request):
     user = User.objects.filter(email=request.POST['email'])
@@ -42,8 +44,9 @@ def logout(request):
     return redirect('/')
 
 def delete_account(request, id):
-    d = User.objects.get(id=id)
-    d.delete()
+    if 'user_id' in request.session:
+        d = User.objects.get(id=id)
+        d.delete()
     return redirect('/')
 
 def home(request):
@@ -51,55 +54,65 @@ def home(request):
         context = {
             'user': User.objects.get(id=request.session['user_id'])
         }
-    return render(request, 'home.html', context)
+        return render(request, 'home.html', context)
+    return redirect('/')
 
 def profile(request, id):
     if 'user_id' in request.session:
         context = {
             'user': User.objects.get(id=request.session['user_id']),
         }
-    return render(request, 'profile.html', context)
+        return render(request, 'profile.html', context)
+    return redirect('/')
 
 def update(request, id):
-    u = User.objects.get(id=id)
-    errors = User.obj_info.basic_validator(request.POST)
-    if len(errors) > 0:
-        for key, value in errors.items():
-            messages.error(request, value)
-    else:
-        u.f_name = request.POST['f_name']
-        u.l_name = request.POST['l_name']
-        u.email = request.POST['email']
-        u.city = request.POST['city']
-        u.save()
-        messages.success(request,'Your information has been updated!')
-    return redirect(f'/profile/{id}')
+    if 'user_id' in request.session:
+        u = User.objects.get(id=id)
+        errors = User.obj_info.basic_validator(request.POST)
+        if len(errors) > 0:
+            for key, value in errors.items():
+                messages.error(request, value)
+        else:
+            u.f_name = request.POST['f_name']
+            u.l_name = request.POST['l_name']
+            u.email = request.POST['email']
+            u.city = request.POST['city']
+            u.save()
+            messages.success(request,'Your information has been updated!')
+        return redirect(f'/profile/{id}')
+    return redirect('/')
 
 def update_pw(request, id):
-    up = User.objects.get(id=id)
-    errors = User.obj_pw.basic_validator(request.POST)
-    if len(errors) > 0:
-        for key, value in errors.items():
-            messages.error(request, value)
-    else:
-        password = request.POST['password']
-        pw_hash = bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
-        up.password = pw_hash
-        up.save()
-        messages.success(request,'Your password has been updated!')
-    return redirect(f'/profile/{id}')
+    if 'user_id' in request.session:
+        up = User.objects.get(id=id)
+        errors = User.obj_pw.basic_validator(request.POST)
+        if len(errors) > 0:
+            for key, value in errors.items():
+                messages.error(request, value)
+        else:
+            password = request.POST['password']
+            pw_hash = bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
+            up.password = pw_hash
+            up.save()
+            messages.success(request,'Your password has been updated!')
+        return redirect(f'/profile/{id}')
+    return redirect('/')
 
 def add_event(request, id):
     if 'user_id' in request.session:
-        title = request.POST['json._embedded.events[i].name]']
-        date = request.POST['json._embedded.events[i].dates.start['localDate']']
-        more_info = request.POST['json._embedded.events[i].url']
-        Event.title.add(title)
-        Event.date.add(date)
-        Event.more_info.add(more_info)
-    return redirect('/home')
+        api_id = request.POST['api_id']
+        title = request.POST['title']
+        date = request.POST['date']
+        more_info = request.POST['url']
+        picture = request.POST['pic']
+        new_event = Event.objects.create(api_id=api_id, title=title, date=date, more_info=more_info, picture=picture, users=User.objects.get(id=id))
+    return redirect('/')
 
 def my_events(request):
+    if 'user_id' in request.session:
+        context = {
+            'events': Event.objects.all().users(id=request.session['user_id'])
+        }
     return render(request, 'myevents.html')
 
 

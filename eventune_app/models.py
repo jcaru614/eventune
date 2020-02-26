@@ -62,6 +62,7 @@ class User(models.Model):
     obj_pw = PwManager()
 
 class Event(models.Model):
+    api_id = models.CharField(max_length=255, default=None)
     title = models.TextField()
     date = models.CharField(max_length=255)
     users = models.ForeignKey(User, related_name='events', on_delete=models.CASCADE)

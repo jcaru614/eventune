@@ -36,7 +36,9 @@
     <!-- body -->
 
     <section>
+        <input id="user_id" type="hidden" value="{{user.id}}">
         <input id="city" type="hidden" value="{{user.city}}">
+        <input id="token" type="hidden" value="{%csrf_token%}">
         <div class="container main-container"></div>
     </section>
 

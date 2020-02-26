@@ -79,6 +79,12 @@
                     </div>
                     <button type="submit" class="btn btn-outline-warning btn-block">Update</button>
                 </form>
+                <form action="/delete/{{user.id}}" method="POST" class="add-pro-pic">
+                    {%csrf_token%}
+                    <h3>Add a profile picture</h3>
+                    <input type="text">
+                    <button type="submit" class="btn btn-outline-primary btn-sm">Add a picture</button>
+                </form>
                 <form action="/delete/{{user.id}}" method="POST" class="delete-pro">
                     {%csrf_token%}
                     <h3>Delete your account</h3>
