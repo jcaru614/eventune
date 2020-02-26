@@ -21,7 +21,7 @@ def registration(request):
     else:
         password = request.POST['password']
         pw_hash = bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
-        new_user = User.objects.create(f_name=request.POST['f_name'], l_name=request.POST['l_name'], email=request.POST['email'], password=pw_hash)
+        new_user = User.objects.create(f_name=request.POST['f_name'], l_name=request.POST['l_name'], email=request.POST['email'], password=pw_hash, city=request.POST['city'])
         user_id = new_user.id
         request.session['user_id'] = user_id
         return redirect('/home')
@@ -41,6 +41,11 @@ def logout(request):
         del request.session['user_id']
     return redirect('/')
 
+def delete_account(request, id):
+    d = User.objects.get(id=id)
+    d.delete()
+    return redirect('/')
+
 def home(request):
     if 'user_id' in request.session:
         context = {
@@ -57,7 +62,7 @@ def profile(request, id):
 
 def update(request, id):
     u = User.objects.get(id=id)
-    errors = User.objects.basic_validator(request.POST)
+    errors = User.obj_info.basic_validator(request.POST)
     if len(errors) > 0:
         for key, value in errors.items():
             messages.error(request, value)
@@ -66,8 +71,22 @@ def update(request, id):
         u.l_name = request.POST['l_name']
         u.email = request.POST['email']
         u.city = request.POST['city']
-        u.password = request.POST['password']
         u.save()
+        messages.success(request,'Your information has been updated!')
+    return redirect(f'/profile/{id}')
+
+def update_pw(request, id):
+    up = User.objects.get(id=id)
+    errors = User.obj_pw.basic_validator(request.POST)
+    if len(errors) > 0:
+        for key, value in errors.items():
+            messages.error(request, value)
+    else:
+        password = request.POST['password']
+        pw_hash = bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
+        up.password = pw_hash
+        up.save()
+        messages.success(request,'Your password has been updated!')
     return redirect(f'/profile/{id}')
 
 def my_events(request):

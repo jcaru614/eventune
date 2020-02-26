@@ -1,7 +1,8 @@
 $(document).ready(function () {
+    var city = $('#city').val();
    $.ajax({
        type: "GET",
-       url: "https://app.ticketmaster.com/discovery/v2/events.json?size=42&apikey=V39QrEGIiAS8Nin2Zy3pJU8nJBNoiFNm",
+       url: "https://app.ticketmaster.com/discovery/v2/events.json?size=42&city="+city+"&apikey=V39QrEGIiAS8Nin2Zy3pJU8nJBNoiFNm",
        async: true,
        dataType: "json",
        success: function (json) {
