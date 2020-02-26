@@ -48,4 +48,30 @@ def home(request):
         }
     return render(request, 'home.html', context)
 
+def profile(request, id):
+    if 'user_id' in request.session:
+        context = {
+            'user': User.objects.get(id=request.session['user_id']),
+        }
+    return render(request, 'profile.html', context)
+
+def update(request, id):
+    u = User.objects.get(id=id)
+    errors = User.objects.basic_validator(request.POST)
+    if len(errors) > 0:
+        for key, value in errors.items():
+            messages.error(request, value)
+    else:
+        u.f_name = request.POST['f_name']
+        u.l_name = request.POST['l_name']
+        u.email = request.POST['email']
+        u.city = request.POST['city']
+        u.password = request.POST['password']
+        u.save()
+    return redirect(f'/profile/{id}')
+
+def my_events(request):
+    return render(request, 'myevents.html')
+
+
 

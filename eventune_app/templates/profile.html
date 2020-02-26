@@ -3,9 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+{% load static %}
+<link
+    href="https://fonts.googleapis.com/css?family=Fjalla+One|Gothic+A1:100,200,300,400,500,600,700,800,900|Philosopher:400,400i,700,700i&display=swap"
+    rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <title>Document</title>
+    <style>
+        .container {
+            color: white;
+        }
+        
+    </style>
 </head>
 <body>
-    
+
+    <nav class="navbar navbar-rl justify-content-between">
+        <div class="container">
+            {% load static %}
+            <a href="/home"><img src="{% static 'images/logo.png' %}" alt="eventune logo" class="navbar_logo"></a>
+            <form class="form-inline left-side">
+                {%csrf_token%}
+                <input id="searchparam" name="keyword" class="form-control mr-sm-2" type="text"
+                    placeholder="Find events">
+                <button class="btn btn-outline-dark" type="submit">Search</button>
+            </form>
+            <a href="/profile/{{user.id}}">{{user.f_name}} Profile</a>
+            <a href="/myevents">My Events</a>
+            <a href="/logout">Log Out</a>
+        </div>
+    </nav>
+
+   <div class="container col-6">
+        <h1>Account Profile</h1>
+        <form action="/update/{{user.id}}" method="POST">
+            {%csrf_token%}
+            <div class="form_group">
+                <label for="f_name">First Name</label>
+                <input style="background-color: rgb(211, 211, 211);" name="f_name" type="text" class="form-control" placeholder="{{user.f_name}}">
+            </div>
+            <div class="form-group">
+                <label for="l_name">Last Name</label>
+                <input name="l_name" type="text" class="form-control" placeholder="{{user.l_name}}">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input name="email" type="text" class="form-control" placeholder="{{user.email}}" >
+            </div>
+            <div class="form-group">
+                <label for="city">City</label>
+                <input name="city" type="text" class="form-control" placeholder="{{user.city}}">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input name="password" type="password" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="pw_confirm">Confirm Password</label>
+                <input name="password_confirm" type="password" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-outline-warning btn-block">Update</button>
+        </form>
+    </div>
 </body>
 </html>
