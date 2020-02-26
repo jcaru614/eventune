@@ -10,5 +10,4 @@ urlpatterns = [
     path('update/<int:id>', views.update),
     path('myevents', views.my_events),
     path('logout', views.logout),
-
 ]
