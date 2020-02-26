@@ -16,7 +16,12 @@ $(document).ready(function () {
                        var img = events.images[j].url
                }
                console.log(events)
-               htmlString += "<div class='card concerts'> <img src='" + img + "' class='card-img-top' /> <div class='card-body'> <p class='card-text'>" + json._embedded.events[i].name + "</p> <p class='card-text'>" + json._embedded.events[i].dates.start['localDate'] + "</p> <a href='" + json._embedded.events[i].url + "' class='btn btn-info m-info'> More Info </a> <button type='button' class='btn btn-warning btn-interes'>Interested</button> </div> </div> "
+               var imgTag = '<img src="' + img + '" class="card-img-top" />'
+               var eventName = '<p class="card-text">' + json._embedded.events[i].name + '</p>'
+               var eventDate = '<p class="card-text">' + json._embedded.events[i].dates.start['localDate'] + '</p>'
+               var moreInfo = '<a href="' + json._embedded.events[i].url + '" class="btn btn-info m-info"> More Info </a>'
+               var button = "<button type='button' class='btn btn-warning btn-interes'>Interested</button>"
+               htmlString += "<div class='card concerts'>"+imgTag+"<div class='card-body'>"+eventName+eventDate+moreInfo+button+"</div></div>"
            }
            console.log(htmlString)
            $(".main-container").html(htmlString)
@@ -24,6 +29,8 @@ $(document).ready(function () {
        error: function (xhr, status, err) {
        }
    });
+   htmlString += "<div class='card concerts'> <img src='" + img + "' class='card-img-top' /> <div class='card-body'> <p class='card-text'>" + json._embedded.events[i].name + "</p> <p class='card-text'>" + json._embedded.events[i].dates.start['localDate'] + "</p> <a href='" + json._embedded.events[i].url + "' class='btn btn-info m-info'> More Info </a> <button type='button' class='btn btn-warning btn-interes'>Interested</button> </div> </div> "
+
    //  search  // %20 for spaces in api url
 
    $('form').submit(function (e) {

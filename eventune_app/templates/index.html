@@ -11,7 +11,7 @@
     <link
         href="https://fonts.googleapis.com/css?family=Fjalla+One|Gothic+A1:100,200,300,400,500,600,700,800,900|Philosopher:400,400i,700,700i&display=swap"
         rel="stylesheet">
-        <link rel="icon" href="{% static 'images/icon.png' %}">
+    <link rel="icon" href="{% static 'images/icon.png' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
 
@@ -28,8 +28,8 @@
     </nav>
     <div class="container">
         <div class="bck_img">
-            <h1>Find the best concerts in your Area</h1>
-            <p>Register and have access to the best selection of concerts close to you.</p>
+            <h1>Find the best events in your Area</h1>
+            <p>Register and have access to the best selection of events close to you.</p>
             <a href="#signup" class="btn btn-danger">Sign up</a>
             <a href="#login" class="btn btn-light btn-outline-dark">Log in</a>
         </div>
@@ -52,79 +52,84 @@
                 <div class="card mb-4 box-shadow card-rl">
                     <img src="{% static "images/checkoff.png" %}" class="icon-rl" alt="concert">
                     <div class="card-body">
-                        <p class="card-text">Never miss another concert</p>
+                        <p class="card-text">Never miss another event</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="row reg-log">
-        <div class="col-6">
-            <div class="col-8">
-                <h2 id="signup">Registration</h2>
-                {%if messages%}
-                    {%for message in messages%}
-                    <p class="errors">{{message}}</p>
-                    {%endfor%}
-                {%endif%}
-                <form action="/registration" method="POST">
-                    {%csrf_token%}
-                    <div class="row">
-                        <div class="form_group col">
-                            <label for="f_name">First Name</label>
-                            <input name="f_name" type="text" class="form-control">
+    <div class="reg-log">
+        {%if messages%}
+        {%for message in messages%}
+        <p class="messages">{{message}}</p>
+        {%endfor%}
+        {%endif%}
+        <div class="row">
+            <div class="col-6">
+                <div class="col-8">
+                    <h2 id="signup">Registration</h2>
+                    <form action="/registration" method="POST">
+                        {%csrf_token%}
+                        <div class="row">
+                            <div class="form_group col">
+                                <label for="f_name">First Name</label>
+                                <input name="f_name" type="text" class="form-control">
+                            </div>
+                            <div class="form-group col">
+                                <label for="l_name">Last Name</label>
+                                <input name="l_name" type="text" class="form-control">
+                            </div>
                         </div>
-                        <div class="form-group col">
-                            <label for="l_name">Last Name</label>
-                            <input name="l_name" type="text" class="form-control">
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <input name="city" type="text" class="form-control">
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="city">City</label>
-                        <input name="city" type="text" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input name="email" type="text" class="form-control">
-                    </div>
-                    <div class="row">
-                        <div class="form-group col">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input name="email" type="text" class="form-control">
+                        </div>
+                        <div class="row">
+                            <div class="form-group col">
+                                <label for="password">Password</label>
+                                <input name="password" type="password" class="form-control">
+                            </div>
+                            <div class="form-group col">
+                                <label for="pw_confirm">Confirm Password</label>
+                                <input name="password_confirm" type="password" class="form-control">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-outline-warning btn-block">Register</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="col-8">
+                    <h2 id="login">Login</h2>
+                    <form action="/login" method="POST">
+                        {%csrf_token%}
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input name="email" type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
                             <label for="password">Password</label>
                             <input name="password" type="password" class="form-control">
                         </div>
-                        <div class="form-group col">
-                            <label for="pw_confirm">Confirm Password</label>
-                            <input name="password_confirm" type="password" class="form-control">
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-outline-warning btn-block">Register</button>
-                </form>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="col-8">
-                <h2 id="login">Login</h2>
-                <form action="/login" method="POST">
-                    {%csrf_token%}
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input name="email" type="text" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input name="password" type="password" class="form-control">
-                    </div>
-                    <button type="submit" class="btn btn-outline-warning btn-block">Log In</button>
-                </form>
+                        <button type="submit" class="btn btn-outline-warning btn-block">Log In</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
     <footer>
         <div class="container">
             {% load static %}
-            <a href="wwww.facebook.com"><img class="footer-icon" src="{% static "images/facebook.png" %}" alt="facebook logo"></a>
-            <a href="wwww.instagram.com"><img class="footer-icon" src="{% static "images/instagram.png" %}" alt="facebook logo"></a>
-            <a href="wwww.twitter.com"><img class="footer-icon" src="{% static "images/twitter.png" %}" alt="facebook logo"></a>
+            <a href="wwww.facebook.com"><img class="footer-icon" src="{% static "images/facebook.png" %}"
+                    alt="facebook logo"></a>
+            <a href="wwww.instagram.com"><img class="footer-icon" src="{% static "images/instagram.png" %}"
+                    alt="facebook logo"></a>
+            <a href="wwww.twitter.com"><img class="footer-icon" src="{% static "images/twitter.png" %}"
+                    alt="facebook logo"></a>
             <p>Copyright © EvenTune 2020</p>
         </div>
     </footer>
