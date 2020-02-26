@@ -63,25 +63,33 @@
                 <h2 id="signup">Registration</h2>
                 <form action="/registration" method="POST">
                     {%csrf_token%}
-                    <div class="form_group">
-                        <label for="f_name">First Name</label>
-                        <input name="f_name" type="text" class="form-control">
+                    <div class="row">
+                        <div class="form_group col">
+                            <label for="f_name">First Name</label>
+                            <input name="f_name" type="text" class="form-control">
+                        </div>
+                        <div class="form-group col">
+                            <label for="l_name">Last Name</label>
+                            <input name="l_name" type="text" class="form-control">
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label for="l_name">Last Name</label>
-                        <input name="l_name" type="text" class="form-control">
+                        <label for="city">City</label>
+                        <input name="city" type="text" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
                         <input name="email" type="text" class="form-control">
                     </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input name="password" type="password" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="pw_confirm">Confirm Password</label>
-                        <input name="password_confirm" type="password" class="form-control">
+                    <div class="row">
+                        <div class="form-group col">
+                            <label for="password">Password</label>
+                            <input name="password" type="password" class="form-control">
+                        </div>
+                        <div class="form-group col">
+                            <label for="pw_confirm">Confirm Password</label>
+                            <input name="password_confirm" type="password" class="form-control">
+                        </div>
                     </div>
                     <button type="submit" class="btn btn-outline-warning btn-block">Register</button>
                 </form>
@@ -105,10 +113,13 @@
             </div>
         </div>
     </div>
-    <footer class="navbar navbar-light bg-light justify-content-between">
+    <footer>
         <div class="container">
             {% load static %}
-            <a class="navbar-brand" href="#"><img src="{% static "images/logo.png" %}" alt="eventune logo" class="navbar_logo"></a>
+            <a href="wwww.facebook.com"><img class="footer-icon" src="{% static "images/facebook.png" %}" alt="facebook logo"></a>
+            <a href="wwww.instagram.com"><img class="footer-icon" src="{% static "images/instagram.png" %}" alt="facebook logo"></a>
+            <a href="wwww.twitter.com"><img class="footer-icon" src="{% static "images/twitter.png" %}" alt="facebook logo"></a>
+            <p>Copyright © EvenTune 2020</p>
         </div>
     </footer>
 </body>
