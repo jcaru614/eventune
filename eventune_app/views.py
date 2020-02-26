@@ -89,6 +89,16 @@ def update_pw(request, id):
         messages.success(request,'Your password has been updated!')
     return redirect(f'/profile/{id}')
 
+def add_event(request, id):
+    if 'user_id' in request.session:
+        title = request.POST['json._embedded.events[i].name]']
+        date = request.POST['json._embedded.events[i].dates.start['localDate']']
+        more_info = request.POST['json._embedded.events[i].url']
+        Event.title.add(title)
+        Event.date.add(date)
+        Event.more_info.add(more_info)
+    return redirect('/home')
+
 def my_events(request):
     return render(request, 'myevents.html')
 
