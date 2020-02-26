@@ -1,6 +1,4 @@
-/* font-family: 'Fjalla One', ;
-font-family: 'Gothic A1', ;
-font-family: 'Philosopher', ; */
+/* *** General Styles *** */
 * {
     font-family: 'Gothic A1';
 }
@@ -8,6 +6,8 @@ font-family: 'Philosopher', ; */
 body {
     background-color: black;
 }
+
+/* *** Nav Bar styles *** */
 
 .navbar-rl {
     background-color: white;
@@ -17,13 +17,33 @@ body {
     height: 50px;
 }
 
-.big-font {
-    font-size: 20px;
+/* *** Footer styles *** */
+
+footer {
+    background-color: white;
+    text-align: center;
+    margin-top: 20px;
+    width: 100%;
 }
 
-.edmpic {
-    width: 75%;
+footer .container {
+    padding: 15px;
 }
+
+.footer-icon {
+    height: 20px;
+    margin: 0 5px;
+}
+
+footer p {
+    font-size: 14px;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+/* *** REGISTRATION AND LOGIN PAGE *** */
+
+/* *** Advertisement poster styles *** */
 
 .bck_img {
     background: url("../images/login_img.jpg");
@@ -44,6 +64,8 @@ body {
 .bck_img p {
     font-size: 30px;
 }
+
+/* *** Cards styles *** */
 
 .cards-container {
     background-color: white;
@@ -67,6 +89,8 @@ body {
     margin: auto;
 }
 
+/* *** Registration and login forms *** */
+
 .reg-log {
     padding-left: 210px;
     color: white;
@@ -75,8 +99,14 @@ body {
     margin-bottom: 80px;
 }
 
+/* *** HOME PAGE *** */
+
 .left-side {
     margin-left: 300px;
+}
+
+section {
+    min-height: 600px;
 }
 
 .concerts {
@@ -85,11 +115,11 @@ body {
     margin: 15px 10px 0 7px;
     height: 400px;
     vertical-align: top;
-    position:relative;
+    position: relative;
 }
 
 .concerts img {
-    height:200px;
+    height: 200px;
     background-color: black;
 }
 
@@ -100,9 +130,9 @@ body {
 }
 
 .concerts .btn-interes {
-    position:absolute;
-    bottom:15px;
-    right:15px;
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
 }
 
 .concerts .m-info {
@@ -110,13 +140,4 @@ body {
     bottom: 15px;
     left: 15px;
 
-}
-
-footer {
-    margin-top: 20px;
-    width: 100%;
-    /* height: 2.5rem; */
-}
-section {
-    min-height:600px;
 }
