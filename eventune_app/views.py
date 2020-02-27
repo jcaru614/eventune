@@ -98,6 +98,15 @@ def update_pw(request, id):
         return redirect(f'/profile/{id}')
     return redirect('/')
 
+def add_profile_pic(request, id):
+    if 'user_id' in request.session:
+        upp = User.objects.get(id=id)
+        upp.profile_image = request.POST['profile_pic']
+        upp.save()
+        messages.success(request,'Your profile picture has been updated!')
+        return redirect(f'/profile/{id}')
+    return redirect('/')
+
 def add_event(request, id):
     if 'user_id' in request.session:
         api_id = request.POST['api_id']

@@ -54,7 +54,7 @@ class User(models.Model):
     city = models.CharField(max_length=255)
     email = models.CharField(max_length=255)
     password = models.CharField(max_length=255)
-    profile_image = models.TextField(default='some profile pic')
+    profile_image = models.TextField(default='https://cdn.pixabay.com/photo/2017/01/11/12/05/emoji-1971624_960_720.png')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = UserManager()

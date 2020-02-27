@@ -28,7 +28,7 @@
                     placeholder="Find events">
                 <button class="btn btn-outline-dark" type="submit">Search</button>
             </form>
-            <a href="/profile/{{user.id}}">{{user.f_name}} Profile</a>
+            <a href="/profile/{{user.id}}"><img class="profile_img" src="{{user.profile_image}}" alt="user profile picture">{{user.f_name}} Profile</a>
             <a href="/myevents">My Events</a>
             <a href="/logout">Log Out</a>
         </div>

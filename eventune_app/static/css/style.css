@@ -24,7 +24,10 @@ body {
 
 /* *** Nav Bar login styles *** */
 
-
+.profile_img {
+    height: 50px;
+    border-radius: 50%;
+}
 
 /* *** Footer styles *** */
 
