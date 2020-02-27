@@ -119,9 +119,15 @@ def my_events(request):
             'user': User.objects.get(id=request.session['user_id']),
             'events': User.objects.get(id=request.session['user_id']).events.all().order_by("-updated_at"),
         }
-    return render(request, 'myevents.html', context)
+        return render(request, 'myevents.html', context)
+    return redirect('/')
 
-# uninterested method
+def remove_event(request, id):
+    if 'user_id' in request.session:
+        event = Event.objects.get(id=id)
+        event.delete()
+        return redirect('/myevents')
+    return redirect('/')
 
 
 
