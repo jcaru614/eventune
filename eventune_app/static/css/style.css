@@ -63,7 +63,7 @@ body {
 
 /* Change color of dropdown links on hover */
 .dropdown-content a:hover {
-    background-color: #ddd;
+    /* background-color: #ddd; */
 }
 
 /* Show the dropdown menu on hover */
@@ -165,15 +165,15 @@ section {
 
 .concerts {
     display: inline-block;
-    width: 350px;
+    width: 260px;
     margin: 15px 10px 0 7px;
-    height: 400px;
+    height: 350px;
     vertical-align: top;
     position: relative;
 }
 
 .concerts img {
-    height: 200px;
+    height: 150px;
     background-color: black;
 }
 

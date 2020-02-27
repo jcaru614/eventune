@@ -53,7 +53,8 @@
 </style>
 
 <body>
-    <nav class="navbar navbar-rl justify-content-between">
+     <!-- nav bar -->
+     <nav class="navbar navbar-rl justify-content-between">
         <div class="container">
             {% load static %}
             <a href="/home"><img src="{% static 'images/logo.png' %}" alt="eventune logo" class="navbar_logo"></a>
@@ -61,13 +62,19 @@
                 {%csrf_token%}
                 <input id="searchparam" name="keyword" class="form-control mr-sm-2" type="text"
                     placeholder="Find events">
-                <button class="btn btn-outline-dark" type="submit">Search</button>
+                <button class="btn btn-dark btn-outline-light" type="submit">Search</button>
             </form>
-            <a href="/profile/{{user.id}}">{{user.f_name}} Profile</a>
-            <a href="/myevents">My Events</a>
-            <a href="/logout">Log Out</a>
+            <div class="dropdown">
+                <a href="/profile/{{user.id}}" class="dropbtn"><img class="profile_img" src="{{user.profile_image}}"
+                        alt="user profile picture">{{user.f_name}} Profile</a>
+                <div class="dropdown-content">
+                    <a href="/myevents" class="btn btn-outline-success">My Events</a>
+                    <a href="/logout" class="btn btn-outline-danger">Log Out</a>
+                </div>
+            </div>
         </div>
     </nav>
+    <!-- body -->
     <div class="container me-list">
         <section>
             <h1>Your Events:</h1>

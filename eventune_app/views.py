@@ -122,6 +122,7 @@ def add_event(request, id):
 def my_events(request):
     if 'user_id' in request.session:
         context = {
+            'user': User.objects.get(id=request.session['user_id']),
             'events': User.objects.get(id=request.session['user_id']).events.all()
         }
     return render(request, 'myevents.html', context)
