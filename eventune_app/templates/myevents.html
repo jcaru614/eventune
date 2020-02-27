@@ -33,14 +33,16 @@
     <div class="container me-list">
         <section>
             <h1>Your Events:</h1>
+            {%for event in events%}
             <div class="me-display">
-                <img class="me-img" src="{% static 'images/icon.png' %}" alt="example">
+                <img class="me-img" src="{{event.picture}}" alt="{{event.title}} picture">
                 <div class="me-info">
-                    <h4>Name</h4>
-                    <p>Date</p>
-                    <button class="btn btn-outline-info">More Info</button>
+                    <h4>{{event.title}}</h4>
+                    <p>{{event.date}}</p>
+                    <a href="{{event.more_info}}" class="btn btn-outline-info">More Info</a>
                 </div>
             </div>
+            {%endfor%}
             <div class="me-display">
                 <img class="me-img" src="{% static 'images/icon.png' %}" alt="example">
                 <div class="me-info">

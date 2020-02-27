@@ -51,11 +51,13 @@ def delete_account(request, id):
 
 def home(request):
     if 'user_id' in request.session:
+        print(request.GET)
         context = {
             'user': User.objects.get(id=request.session['user_id'])
+            # 'events': request.POST['serverResponse']
         }
-        return render(request, 'home.html', context)
-    return redirect('/')
+    return render(request, 'home.html', context)
+    # return redirect('/')
 
 def profile(request, id):
     if 'user_id' in request.session:
@@ -109,20 +111,20 @@ def add_profile_pic(request, id):
 
 def add_event(request, id):
     if 'user_id' in request.session:
-        api_id = request.POST['api_id']
-        title = request.POST['title']
-        date = request.POST['date']
-        more_info = request.POST['url']
-        picture = request.POST['pic']
+        api_id = request.GET['api_id']
+        title = request.GET['title']
+        date = request.GET['date']
+        more_info = request.GET['url']
+        picture = request.GET['pic']
         new_event = Event.objects.create(api_id=api_id, title=title, date=date, more_info=more_info, picture=picture, users=User.objects.get(id=id))
     return redirect('/')
 
 def my_events(request):
     if 'user_id' in request.session:
         context = {
-            'events': Event.objects.all().users(id=request.session['user_id'])
+            'events': User.objects.get(id=request.session['user_id']).events.all()
         }
-    return render(request, 'myevents.html')
+    return render(request, 'myevents.html', context)
 
 
 
