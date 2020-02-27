@@ -117,7 +117,7 @@ def my_events(request):
     if 'user_id' in request.session:
         context = {
             'user': User.objects.get(id=request.session['user_id']),
-            'events': User.objects.get(id=request.session['user_id']).events.all(),
+            'events': User.objects.get(id=request.session['user_id']).events.all().order_by("-updated_at"),
         }
     return render(request, 'myevents.html', context)
 
