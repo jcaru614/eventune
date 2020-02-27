@@ -13,6 +13,6 @@ urlpatterns = [
     path('add_profile_pic/<int:id>', views.add_profile_pic),
     path('add_event/<int:id>', views.add_event),
     path('myevents', views.my_events),
-    # uninterested url path
+    path('remove_event/<int:id>', views.remove_event),
     path('logout', views.logout),
 ]
