@@ -58,7 +58,7 @@ $(document).ready(function () {
                     var hiddendate = '<input name="date" type="hidden" value="' + json._embedded.events[i].dates.start["localDate"] + '">'
                     var hiddenurl = '<input name="url" type="hidden" value="' + json._embedded.events[i].url + '">'
                     var hiddenpic = '<input name="pic" type="hidden" value="' + img + '">'
-                    var button = "<form action='/add_event/" + user_id + "' method='POST'>" + hiddenid + hiddentitle + hiddendate + hiddenurl + hiddenpic + " <button type='submit' class='btn btn-warning btn-interes'>Interested</button>"
+                    var button = "<form action='/add_event/" + user_id + "' method='GET'>" + hiddenid + hiddentitle + hiddendate + hiddenurl + hiddenpic + " <button type='submit' class='btn btn-warning btn-interes'>Interested</button>"
                     htmlString += "<div class='card concerts'>" + imgTag + "<div class='card-body'>" + eventName + eventDate + moreInfo + button + "</div></div>"
                 }
                 $(".main-container").html(htmlString)
@@ -66,4 +66,3 @@ $(document).ready(function () {
     })
 
 })
-
