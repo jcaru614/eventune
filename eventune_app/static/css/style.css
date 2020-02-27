@@ -184,7 +184,7 @@ section {
 .concerts p {
     margin: 5;
     padding: 0;
-    font-size: 20px;
+    font-size: 16px;
 }
 
 .concerts .btn-interes {
@@ -235,34 +235,31 @@ section {
 
 /* *** Events display styles *** */
 
-.me-list {
-    color: black;
-    padding: 50px;
+.top-container  {
+    padding-top: 20px;
 }
 
-.me-display {
-    padding: 2px 0px 2px 2px;
-    border-radius: 5px;
-    background-color: whitesmoke;
+.centered {
+    display: block;
+    align-self: center;
+    margin: 0 auto;
+    max-width: 820px;
+    height: 155px;
+}
+.event_image {
+    height: 152px;
+    vertical-align: bottom;
 }
 
-.me-img {
-    height: 200px;
-    margin-right: 30px;
-    margin: 1px;
-    border-radius: 5px;
+.overflow {
+     max-height: 24px;
+    overflow: hidden;
 }
-
-.me-info {
-    display: inline-block;
-    margin-left: 20px;
-}
-
 hr {
     border-style: dotted none none;
-    border-width: 10px;
+    border-width: 4px;
     border-color: silver;
-    width: 70%;
+    width: 40%;
 }
 
 .remove {

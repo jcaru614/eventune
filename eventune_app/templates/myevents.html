@@ -13,20 +13,23 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <link rel="icon" href="{% static 'images/icon.png' %}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <title>{{user.f_name}} Events</title>
+    <title>{{user.f_name}}
+        Events</title>
 </head>
 
 <body>
-     <!-- nav bar -->
-     <nav class="navbar navbar-rl justify-content-between">
+    <!-- nav bar -->
+    <nav class="navbar navbar-rl justify-content-between">
         <div class="container">
             {% load static %}
             <a href="/home"><img src="{% static 'images/logo.png' %}" alt="eventune logo" class="navbar_logo"></a>
             <div class="dropdown">
                 <a href="/profile/{{user.id}}" class="dropbtn"><img class="profile_img" src="{{user.profile_image}}"
-                        alt="user profile picture"> {{user.f_name}}</a>
+                        alt="user profile picture">
+                    {{user.f_name}}</a>
                 <div class="dropdown-content">
-                    <a href="/profile/{{user.id}}" class="btn btn-outline-success">{{user.f_name}} Profile</a>
+                    <a href="/profile/{{user.id}}" class="btn btn-outline-success">{{user.f_name}}
+                        Profile</a>
                     <a href="/myevents" class="btn btn-outline-success">My Events</a>
                     <a href="/logout" class="btn btn-outline-danger">Log Out</a>
                 </div>
@@ -34,36 +37,42 @@
         </div>
     </nav>
     <!-- body -->
-    <div class="container me-list">
-        <section>
-            <h1>Your Events:</h1>
-            {%for event in events%}
-            <div class="me-display">
-                <img class="me-img" src="{{event.picture}}" alt="{{event.title}} picture">
-                <div class="me-info">
-                    <h4>{{event.title}}</h4>
-                    <p>{{event.date}}</p>
-                    <a href="{{event.more_info}}" class="btn btn-outline-info">More Info</a>
-                    <a href="/uninterested/{{event.id}}" class="btn btn-outline-warning remove">Remove from your
-                        events</a>
+   
+        <div class="container top-container">
+        {%for event in events%}
+            <div class="card mb-3 centered">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="{{event.picture}}" class="card-img event_image" alt="{{event.title}} picture">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title overflow">{{event.title}}</h5>
+                            <p class="card-text">{{event.date}}</p>
+                            <a href="{{event.more_info}}">More Info...</a>
+                            <a href="/uninterested/{{event.id}}" class="btn btn-outline-danger remove">Remove
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <hr>
-            {%endfor%}
-        </section>
+        <hr>
+        {%endfor%}
     </div>
-    <footer>
-        <div class="container">
-            {% load static %}
-            <a href="wwww.facebook.com"><img class="footer-icon" src="{% static "images/facebook.png" %}"
-                    alt="facebook logo"></a>
-            <a href="wwww.instagram.com"><img class="footer-icon" src="{% static "images/instagram.png" %}"
-                    alt="facebook logo"></a>
-            <a href="wwww.twitter.com"><img class="footer-icon" src="{% static "images/twitter.png" %}"
-                    alt="facebook logo"></a>
-            <p>Copyright © EvenTune 2020</p>
-        </div>
-    </footer>
+
+
+        <footer>
+            <div class="container">
+                {% load static %}
+                <a href="wwww.facebook.com"><img class="footer-icon" src="{% static "images/facebook.png" %}"
+                        alt="facebook logo"></a>
+                <a href="wwww.instagram.com"><img class="footer-icon" src="{% static "images/instagram.png" %}"
+                        alt="facebook logo"></a>
+                <a href="wwww.twitter.com"><img class="footer-icon" src="{% static "images/twitter.png" %}"
+                        alt="facebook logo"></a>
+                <p>Copyright © EvenTune 2020</p>
+            </div>
+        </footer>
 </body>
 
 </html>
