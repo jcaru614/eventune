@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     {% load static %}
-    <link href="https://fonts.googleapis.com/css?family=Fjalla+One|Gothic+A1:100,200,300,400,500,600,700,800,900|Philosopher:400,400i,700,700i&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css?family=Fjalla+One|Gothic+A1:100,200,300,400,500,600,700,800,900|Philosopher:400,400i,700,700i&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <link rel="icon" href="{% static 'images/icon.png' %}">
@@ -26,11 +27,16 @@
                 {%csrf_token%}
                 <input id="searchparam" name="keyword" class="form-control mr-sm-2" type="text"
                     placeholder="Find events">
-                <button class="btn btn-outline-dark" type="submit">Search</button>
+                <button class="btn btn-dark btn-outline-light" type="submit">Search</button>
             </form>
-            <a href="/profile/{{user.id}}"><img class="profile_img" src="{{user.profile_image}}" alt="user profile picture">{{user.f_name}} Profile</a>
-            <a href="/myevents">My Events</a>
-            <a href="/logout">Log Out</a>
+            <div class="dropdown">
+                <a href="/profile/{{user.id}}" class="dropbtn"><img class="profile_img" src="{{user.profile_image}}"
+                        alt="user profile picture">{{user.f_name}} Profile</a>
+                <div class="dropdown-content">
+                    <a href="/myevents">My Events</a>
+                    <a href="/logout">Log Out</a>
+                </div>
+            </div>
         </div>
     </nav>
     <!-- body -->
@@ -45,14 +51,18 @@
     <footer>
         <div class="container">
             {% load static %}
-            <a href="wwww.facebook.com"><img class="footer-icon" src="{% static "images/facebook.png" %}" alt="facebook logo"></a>
-            <a href="wwww.instagram.com"><img class="footer-icon" src="{% static "images/instagram.png" %}" alt="facebook logo"></a>
-            <a href="wwww.twitter.com"><img class="footer-icon" src="{% static "images/twitter.png" %}" alt="facebook logo"></a>
+            <a href="wwww.facebook.com"><img class="footer-icon" src="{% static "images/facebook.png" %}"
+                    alt="facebook logo"></a>
+            <a href="wwww.instagram.com"><img class="footer-icon" src="{% static "images/instagram.png" %}"
+                    alt="facebook logo"></a>
+            <a href="wwww.twitter.com"><img class="footer-icon" src="{% static "images/twitter.png" %}"
+                    alt="facebook logo"></a>
             <p>Copyright © EvenTune 2020</p>
         </div>
     </footer>
     {% load static %}
     <script src="{% static 'js/index.js' %}"></script>
+    <script src="{% static 'js/styling.js' %}"></script>
 </body>
 
 </html>
