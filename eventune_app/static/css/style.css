@@ -65,10 +65,6 @@ body {
     display: inline-block;
 }
 
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {
-    /* background-color: #ddd; */
-}
 
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
@@ -174,15 +170,19 @@ section {
     height: 350px;
     vertical-align: top;
     position: relative;
+    background-color: whitesmoke;
 }
 
 .concerts img {
     height: 150px;
     background-color: black;
+    border-radius: 5px;
+    border: 1px solid white;
+
 }
 
 .concerts p {
-    margin: 0;
+    margin: 5;
     padding: 0;
     font-size: 20px;
 }
@@ -236,19 +236,35 @@ section {
 /* *** Events display styles *** */
 
 .me-list {
-    color: white;
+    color: black;
     padding: 50px;
 }
 
 .me-display {
-    padding-top: 30px;
+    padding: 2px 0px 2px 2px;
+    border-radius: 5px;
+    background-color: whitesmoke;
 }
 
 .me-img {
     height: 200px;
     margin-right: 30px;
+    margin: 1px;
+    border-radius: 5px;
 }
 
 .me-info {
     display: inline-block;
+    margin-left: 20px;
+}
+
+hr {
+    border-style: dotted none none;
+    border-width: 10px;
+    border-color: silver;
+    width: 70%;
+}
+
+.remove {
+    margin-left: 35%;
 }

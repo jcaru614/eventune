@@ -23,15 +23,9 @@
         <div class="container">
             {% load static %}
             <a href="/home"><img src="{% static 'images/logo.png' %}" alt="eventune logo" class="navbar_logo"></a>
-            <form class="form-inline left-side">
-                {%csrf_token%}
-                <input id="searchparam" name="keyword" class="form-control mr-sm-2" type="text"
-                    placeholder="Find events">
-                <button class="btn btn-dark btn-outline-light" type="submit">Search</button>
-            </form>
             <div class="dropdown">
                 <a href="/profile/{{user.id}}" class="dropbtn"><img class="profile_img" src="{{user.profile_image}}"
-                        alt="user profile picture">{{user.f_name}}</a>
+                        alt="user profile picture"> {{user.f_name}}</a>
                 <div class="dropdown-content">
                     <a href="/profile/{{user.id}}" class="btn btn-outline-success">{{user.f_name}} Profile</a>
                     <a href="/myevents" class="btn btn-outline-success">My Events</a>
