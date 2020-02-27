@@ -4,17 +4,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet"href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     {% load static %}
-    <link href="https://fonts.googleapis.com/css?family=Fjalla+One|Gothic+A1:100,200,300,400,500,600,700,800,900|Philosopher:400,400i,700,700i&display=swap"rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Fjalla+One|Gothic+A1:100,200,300,400,500,600,700,800,900|Philosopher:400,400i,700,700i&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <link rel="icon" href="{% static 'images/icon.png' %}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <title>{{user.f_name}} Events</title>
 </head>
 
-<body>
+<style>
+    .me-list {
+        color: black;
+        padding: 50px;
+    }
 
+    .me-display {
+        padding: 2px 0px 2px 2px;
+        background-color: white;
+        border-radius: 5px;
+    }
+
+    .me-img {
+        height: 200px;
+        margin-right: 30px;
+        margin: 1px;
+        border-radius: 5px;
+    }
+
+    .me-info {
+        display: inline-block;
+        margin-left: 20px;
+    }
+
+    hr {
+        border-style: dotted none none;
+        border-width: 10px;
+        border-color: silver;
+        width: 70%;
+    }
+
+    .remove {
+        margin-left: 35%;
+    }
+</style>
+
+<body>
     <nav class="navbar navbar-rl justify-content-between">
         <div class="container">
             {% load static %}
@@ -40,25 +78,12 @@
                     <h4>{{event.title}}</h4>
                     <p>{{event.date}}</p>
                     <a href="{{event.more_info}}" class="btn btn-outline-info">More Info</a>
+                    <a href="/uninterested/{{event.id}}" class="btn btn-outline-warning remove">Remove from your
+                        events</a>
                 </div>
             </div>
+            <hr>
             {%endfor%}
-            <div class="me-display">
-                <img class="me-img" src="{% static 'images/icon.png' %}" alt="example">
-                <div class="me-info">
-                    <h4>Name</h4>
-                    <p>Date</p>
-                    <button class="btn btn-outline-info">More Info</button>
-                </div>
-            </div>
-            <div class="me-display">
-                <img class="me-img" src="{% static 'images/icon.png' %}" alt="example">
-                <div class="me-info">
-                    <h4>Name</h4>
-                    <p>Date</p>
-                    <button class="btn btn-outline-info">More Info</button>
-                </div>
-            </div>
         </section>
     </div>
     <footer>

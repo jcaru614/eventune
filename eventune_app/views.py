@@ -126,5 +126,7 @@ def my_events(request):
         }
     return render(request, 'myevents.html', context)
 
+# uninterested method
+
 
 
