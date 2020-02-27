@@ -5,6 +5,7 @@
 
 body {
     background-color: black;
+    /* background:linear-gradient(to right, #040404, #000000, #656565); */
 }
 
 .messages {
@@ -12,10 +13,15 @@ body {
     margin-left: 370px;
 }
 
+.btn {
+    box-shadow: rgb(128, 128, 128) 2px 2px;
+}
+
 /* *** Nav Bar styles *** */
 
 .navbar-rl {
-    background-color: white;
+    /* background-color: white; */
+    background: linear-gradient(-72deg, #dedede, #ffffff 16%, #dedede 21%, #ffffff 24%, #dedede 36%, #ffffff 45%, #ffffff 60%, #dedede 72%, #454545 27%, #ffffff 80%, #dedede 84%, #a1a1a1);
 }
 
 .navbar_logo {
@@ -27,6 +33,42 @@ body {
 .profile_img {
     height: 50px;
     border-radius: 50%;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown .dropbtn {
+    color: black;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
 }
 
 /* *** Footer styles *** */
@@ -162,7 +204,7 @@ section {
 
 .upload-pro h1 {
     text-align: center;
-    }
+}
 
 .upload-pro .row {
     padding: 20px;
