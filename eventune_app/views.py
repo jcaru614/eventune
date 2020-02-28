@@ -1,8 +1,11 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib import messages
+from django.http import JsonResponse
+from django.core import serializers
+
 from .models import *
 import bcrypt
-
+import json
 
 def index(request):
     if 'user_id' in request.session:
@@ -131,5 +134,9 @@ def remove_event(request, id):
         return redirect('/myevents')
     return redirect('/')
 
+def petetest(request):
+    qs = User.objects.get(id=request.session['user_id']).events.all()
+    qs_json = serializers.serialize('json', qs)
 
+    return JsonResponse(qs_json, safe=False)
 

@@ -15,4 +15,5 @@ urlpatterns = [
     path('myevents', views.my_events),
     path('remove_event/<int:id>', views.remove_event),
     path('logout', views.logout),
+    path('petetest', views.petetest),
 ]
