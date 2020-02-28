@@ -83,13 +83,13 @@
                 </form>
                 <form action="/add_profile_pic/{{user.id}}" method="POST" class="add-pro-pic">
                     {%csrf_token%}
-                    <h3>Add a profile picture link</h3>
+                    <h4>Add a profile picture link</h4>
                     <input type="text" name="profile_pic">
                     <button type="submit" class="btn btn-outline-primary btn-sm">Add a picture</button>
                 </form>
                 <form action="/delete/{{user.id}}" method="POST" class="delete-pro">
                     {%csrf_token%}
-                    <h3>Delete your account</h3>
+                    <h4>Delete your account</h4>
                     <button type="submit" class="btn btn-outline-danger btn-sm">Delete Account</button>
                 </form>
             </div>

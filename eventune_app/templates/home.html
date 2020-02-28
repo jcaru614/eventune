@@ -23,7 +23,7 @@
         <div class="container">
             {% load static %}
             <a href="/home"><img src="{% static 'images/logo.png' %}" alt="eventune logo" class="navbar_logo"></a>
-            <form class="form-inline left-side">
+            <form class="form-inline search">
                 {%csrf_token%}
                 <input id="searchparam" name="keyword" class="form-control mr-sm-2" type="text"
                     placeholder="Find events">
@@ -33,7 +33,7 @@
                 <a href="/profile/{{user.id}}" class="dropbtn"><img class="profile_img" src="{{user.profile_image}}"
                         alt="user profile picture"> {{user.f_name}}</a>
                 <div class="dropdown-content">
-                    <a href="/profile/{{user.id}}" class="btn btn-outline-success">{{user.f_name}} Profile</a>
+                    <a href="/profile/{{user.id}}" class="btn btn-outline-success"> {{user.f_name}} Profile</a>
                     <a href="/myevents" class="btn btn-outline-success">My Events</a>
                     <a href="/logout" class="btn btn-outline-danger">Log Out</a>
                 </div>
@@ -46,7 +46,13 @@
         <input id="user_id" type="hidden" value="{{user.id}}">
         <input id="city" type="hidden" value="{{user.city}}">
         <input id="token" type="hidden" value="{%csrf_token%}">
-        <div class="container main-container"></div>
+        <div class="container main-container">
+            {%if messages%}
+            {%for message in messages%}
+            <p class="messages">{{message}}</p>
+            {%endfor%}
+            {%endif%}
+        </div>
     </section>
 
     <footer>
@@ -63,7 +69,6 @@
     </footer>
     {% load static %}
     <script src="{% static 'js/index.js' %}"></script>
-    <script src="{% static 'js/styling.js' %}"></script>
 </body>
 
 </html>

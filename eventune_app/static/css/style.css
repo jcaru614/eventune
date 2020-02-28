@@ -32,7 +32,7 @@ body {
 
 .profile_img {
     height: 50px;
-    border-radius: 50%;
+    border-radius: 100%;
 }
 
 .dropdown {
@@ -154,13 +154,8 @@ footer p {
 }
 
 /* *** HOME PAGE *** */
-
-.left-side {
-    margin-left: 300px;
-}
-
 section {
-    min-height: 600px;
+    min-height: 525px;
 }
 
 .concerts {
@@ -180,23 +175,34 @@ section {
     border: 1px solid white;
 
 }
-
+.card-title {
+    font-weight: 700;
+}
 .concerts p {
-    margin: 5;
+    margin: 0;
     padding: 0;
     font-size: 16px;
 }
 
+.concerts form {
+    margin-top: 5px;
+}
+
 .concerts .btn-interes {
     position: absolute;
-    bottom: 15px;
-    right: 15px;
+    bottom: 10px;
+    left: 80px;
 }
 
 .concerts .m-info {
     position: absolute;
     bottom: 15px;
     left: 15px;
+}
+/* jquery button class */
+
+.added {
+    background-color: gray;
 }
 
 /* *** EDIT PROFILE PAGE *** */
@@ -260,6 +266,12 @@ hr {
     border-width: 4px;
     border-color: silver;
     width: 40%;
+}
+
+.empty {
+    text-align: center;
+    color: white;
+    padding-top: 200px;
 }
 
 .remove {

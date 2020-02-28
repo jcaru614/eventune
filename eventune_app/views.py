@@ -103,14 +103,16 @@ def add_profile_pic(request, id):
         return redirect(f'/profile/{id}')
     return redirect('/')
 
-def add_event(request, id):
+def add_event(request):
+    print('add event')
     if 'user_id' in request.session:
         api_id = request.GET['api_id']
         title = request.GET['title']
         date = request.GET['date']
         more_info = request.GET['url']
         picture = request.GET['pic']
-        new_event = Event.objects.create(api_id=api_id, title=title, date=date, more_info=more_info, picture=picture, users=User.objects.get(id=id))
+        new_event = Event.objects.create(api_id=api_id, title=title, date=date, more_info=more_info, picture=picture, users=User.objects.get(id=request.session['user_id']))
+        messages.success(request, "Successfully added")
     return redirect('/')
 
 def my_events(request):
