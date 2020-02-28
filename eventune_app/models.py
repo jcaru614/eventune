@@ -66,6 +66,8 @@ class Event(models.Model):
     title = models.TextField()
     date = models.CharField(max_length=255)
     users = models.ForeignKey(User, related_name='events', on_delete=models.CASCADE)
+    location = models.CharField(max_length=255, default=None)
+    address = models.CharField(max_length=255, default=None)
     more_info = models.TextField(default='more info')
     picture = models.TextField(default='some picture')
     created_at = models.DateTimeField(auto_now_add=True)

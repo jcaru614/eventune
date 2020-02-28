@@ -114,7 +114,9 @@ def add_event(request):
         date = request.GET['date']
         more_info = request.GET['url']
         picture = request.GET['pic']
-        new_event = Event.objects.create(api_id=api_id, title=title, date=date, more_info=more_info, picture=picture, users=User.objects.get(id=request.session['user_id']))
+        location = request.GET['location']
+        address = request.GET['address']
+        new_event = Event.objects.create(api_id=api_id, title=title, date=date, location=location, address=address, more_info=more_info, picture=picture, users=User.objects.get(id=request.session['user_id']))
         messages.success(request, "Successfully added")
     return redirect('/')
 

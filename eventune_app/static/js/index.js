@@ -17,6 +17,7 @@ $(document).ready(function () {
         
     }
     function content(json, num) {
+        console.log(json)
         $.get('/petetest', function(data) {
             var myData = JSON.parse(data);
             var dict = {}
@@ -41,10 +42,11 @@ $(document).ready(function () {
                 var hiddendate = '<input name="date" type="hidden" value="' + json._embedded.events[i].dates.start["localDate"] + '">'
                 var hiddenurl = '<input name="url" type="hidden" value="' + json._embedded.events[i].url + '">'
                 var hiddenpic = '<input name="pic" type="hidden" value="' + img + '">'
-                
-                var button = "<form class='interested' >" + hiddenid + hiddentitle + hiddendate + hiddenurl + hiddenpic
+                var hiddenlocation = '<input name="location" type="hidden" value="' + json._embedded.events[i]._embedded.venues[0].city.name +", "+ json._embedded.events[i]._embedded.venues[0].state.stateCode +'">'
+                var hiddenaddress = '<input name="address" type="hidden" value="' + json._embedded.events[i]._embedded.venues[0].address['line1']+'">'
+                var button = "<form class='interested' >" + hiddenlocation + hiddenaddress + hiddenid + hiddentitle + hiddendate + hiddenurl + hiddenpic
                 if(dict[events.id] == 1){
-                    button += " <button type='submit' class='btn btn-success btn-interes'>Added</button></form>"
+                    button += " <p>Added ✓</p></form>"
                 } else {
                     button += " <button type='submit' class='btn btn-warning btn-interes'>Interested</button></form>"
                 }
