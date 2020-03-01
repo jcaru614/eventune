@@ -9,11 +9,11 @@ urlpatterns = [
     path('profile/<int:id>', views.profile),
     path('update/<int:id>', views.update),
     path('updatepw/<int:id>', views.update_pw),
-    path('delete/<int:id>', views.delete_account),
+    path('delete', views.delete_account),
     path('add_profile_pic/<int:id>', views.add_profile_pic),
     path('add_event', views.add_event),
     path('myevents', views.my_events),
     path('remove_event/<int:id>', views.remove_event),
     path('logout', views.logout),
-    path('petetest', views.petetest),
+    path('refresh_data', views.refresh_data),
 ]

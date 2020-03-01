@@ -28,10 +28,10 @@
                         alt="user profile picture">
                     {{user.f_name}}</a>
                 <div class="dropdown-content">
-                    <a href="/profile/{{user.id}}" class="btn btn-outline-success">{{user.f_name}}
+                    <a href="/profile/{{user.id}}">{{user.f_name}}
                         Profile</a>
-                    <a href="/myevents" class="btn btn-outline-success">My Events</a>
-                    <a href="/logout" class="btn btn-outline-danger">Log Out</a>
+                    <a href="/myevents">My Events</a>
+                    <a href="/logout">Log Out</a>
                 </div>
             </div>
         </div>
@@ -50,9 +50,11 @@
                     <div class="col-md-8">
                         <div class="card-body">
                             <h5 class="card-title overflow">{{event.title}}</h5>
+                            <p class="card-text">{{event.address}} {{event.location}}</p>
                             <p class="card-text">{{event.date}}</p>
-                            <a href="{{event.more_info}}">More Info...</a>
-                            <a href="/remove_event/{{event.id}}" class="btn btn-outline-danger remove">Remove
+                            <p id="buy">Do you want to buy tickets? <a class="btn btn-sm btn-info" href="{{event.more_info}}" target="_blank" >Click Here!</a></p>
+                            
+                            <a href="/remove_event/{{event.id}}" class="btn btn-outline-danger btn-sm remove">X
                             </a>
                         </div>
                     </div>

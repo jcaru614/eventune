@@ -20,7 +20,7 @@
 <body>
     <!-- nav bar -->
     <nav class="navbar navbar-rl justify-content-between">
-        <div class="container">
+        <div class="container nav-container">
             {% load static %}
             <a href="/home"><img src="{% static 'images/logo.png' %}" alt="eventune logo" class="navbar_logo"></a>
             <form class="form-inline search">
@@ -33,9 +33,9 @@
                 <a href="/profile/{{user.id}}" class="dropbtn"><img class="profile_img" src="{{user.profile_image}}"
                         alt="user profile picture"> {{user.f_name}}</a>
                 <div class="dropdown-content">
-                    <a href="/profile/{{user.id}}" class="btn btn-outline-success"> {{user.f_name}} Profile</a>
-                    <a href="/myevents" class="btn btn-outline-success">My Events</a>
-                    <a href="/logout" class="btn btn-outline-danger">Log Out</a>
+                    <a href="/profile/{{user.id}}"> {{user.f_name}} Profile</a>
+                    <a href="/myevents">My Events</a>
+                    <a href="/logout">Log Out</a>
                 </div>
             </div>
         </div>

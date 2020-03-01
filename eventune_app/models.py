@@ -6,12 +6,12 @@ import re
 class UserManager(models.Manager):
     def basic_validator(self, postData):
         errors = {}
-        if (len(postData['f_name']) == 0) or (len(postData['l_name']) == 1) or (len(postData['email']) == 0):
+        if (len(postData['f_name']) == 0) or (len(postData['l_name']) == 0) or (len(postData['city']) == 0) or (len(postData['email']) == 0) or (len(postData['password']) == 0):
             errors["blank"] = "All fields are required and must not be blank!"
-        if len(postData['f_name']) < 2:
-            errors['f_name'] = 'First Name should be at least 2 characters long'
-        if len(postData['l_name']) < 2:
-            errors['l_name'] = 'Last Name should be at least 2 characters long'
+        if len(postData['f_name']) < 3:
+            errors['f_name'] = 'First Name should be at least 3 characters long'
+        if len(postData['l_name']) < 3:
+            errors['l_name'] = 'Last Name should be at least 3 characters long'
         if len(postData['city']) < 3:
             errors['city'] = 'City should be at least 3 characters long'
         EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
@@ -26,12 +26,12 @@ class UserManager(models.Manager):
 class InfoManager(models.Manager):
     def basic_validator(self, postData):
         errors = {}
-        if (len(postData['f_name']) == 0) or (len(postData['l_name']) == 1) or (len(postData['email']) == 0):
+        if (len(postData['f_name']) == 0) or (len(postData['l_name']) == 0) or (len(postData['email']) == 0) or (len(postData['city']) == 0):
             errors["blank"] = "All fields are required and must not be blank!"
-        if len(postData['f_name']) < 2:
-            errors['f_name'] = 'First Name should be at least 2 characters long'
-        if len(postData['l_name']) < 2:
-            errors['l_name'] = 'Last Name should be at least 2 characters long'
+        if len(postData['f_name']) < 3:
+            errors['f_name'] = 'First Name should be at least 3 characters long'
+        if len(postData['l_name']) < 3:
+            errors['l_name'] = 'Last Name should be at least 3 characters long'
         EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
         if not EMAIL_REGEX.match(postData['email']):             
             errors['email'] = "Invalid email address!"

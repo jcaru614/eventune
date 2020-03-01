@@ -5,7 +5,6 @@
 
 body {
     background-color: black;
-    /* background:linear-gradient(to right, #040404, #000000, #656565); */
 }
 
 .messages {
@@ -28,10 +27,11 @@ body {
     height: 50px;
 }
 
-/* *** Nav Bar login styles *** */
+/* *** Nav Bar logged in styles *** */
 
 .profile_img {
     height: 50px;
+    width: 50px;
     border-radius: 100%;
 }
 
@@ -65,6 +65,10 @@ body {
     display: inline-block;
 }
 
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
 
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
@@ -95,64 +99,6 @@ footer p {
     margin-bottom: 0;
 }
 
-/* *** REGISTRATION AND LOGIN PAGE *** */
-
-/* *** Advertisement poster styles *** */
-
-.bck_img {
-    background: url("../images/login_img.jpg");
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 650px;
-    margin: 20px 0;
-    text-align: center;
-    padding-top: 250px;
-    color: white;
-}
-
-.bck_img h1 {
-    font-size: 60px;
-    font-weight: 900;
-}
-
-.bck_img p {
-    font-size: 30px;
-}
-
-/* *** Card styles *** */
-
-.cards-container {
-    background-color: white;
-    padding-top: 60px;
-    padding-bottom: 60px;
-}
-
-.card-rl {
-    border: none;
-    text-align: center;
-}
-
-.card-rl p {
-    font-size: 25px;
-    color: gray;
-}
-
-.icon-rl {
-    height: 130px;
-    display: block;
-    margin: auto;
-}
-
-/* *** Registration and login forms *** */
-
-.reg-log {
-    padding-left: 210px;
-    color: white;
-    padding-top: 80px;
-    background-color: black;
-    margin-bottom: 80px;
-}
-
 /* *** HOME PAGE *** */
 section {
     min-height: 525px;
@@ -177,7 +123,10 @@ section {
 }
 .card-title {
     font-weight: 700;
+    overflow: hidden;
+    max-height: 20px;
 }
+
 .concerts p {
     margin: 0;
     padding: 0;
@@ -199,81 +148,588 @@ section {
     bottom: 15px;
     left: 15px;
 }
+
+.check {
+    font-weight: 900;
+    color: green;
+}
+
+/* *** Card styles *** */
+
+.cards-container {
+    background-color: white;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.card-rl {
+    border: none;
+    text-align: center;
+}
+
+.card-rl p {
+    font-size: 20px;
+    color: gray;
+}
+
+.icon-rl {
+    height: 100px;
+    display: block;
+    margin: auto;
+}
 /* jquery button class */
 
 .added {
     background-color: gray;
 }
 
-/* *** EDIT PROFILE PAGE *** */
+/* responsive styling */
 
-.upload-pro {
-    padding: 40px;
-    color: white;
+@media only screen and (max-width: 480px) {
+
+    /* *** REGISTRATION AND LOGIN PAGE *** */
+
+    /* *** Advertisement poster styles *** */
+    .bck_img {
+        background: url("../images/login_img.jpg");
+        background-size: cover;
+        width: 100%;
+        height: 250px;
+        margin: 20px 0;
+        text-align: center;
+        padding-top: 80px;
+        color: white;
+    }
+
+    .bck_img h1 {
+        font-size: 25px;
+        font-weight: 900;
+    }
+
+    .bck_img p {
+        font-size: 15px;
+    }
+
+    /* *** Registration and login forms *** */
+
+    .reg-log {
+        color: white;
+        padding-top: 5px;
+        background-color: black;
+        margin-bottom: 40px;
+    }
+
+    .login,
+    .regis {
+        /* margin: 30px, 20px; */
+        margin-right: 20px;
+        margin-left: 20px;
+        width: 90%;
+        margin-top: 30px;
+    }
+
+    /* *** Nav Bar styles *** */
+
+    .navbar-rl {
+        /* background-color: white; */
+        margin: 0;
+        padding: 0;
+        height: 200px;
+        width: 100%;
+    }
+
+    /* *** Nav Bar logged in styles *** */
+    .nav-container {
+        position: relative;
+    }
+
+    .navbar_logo {
+        position: absolute;
+        bottom: 40px;
+        left: 20px;
+    }
+
+    .search input {
+        position: absolute;
+        bottom: -10px;
+        left: 20px;
+        width: 65%;
+    }
+
+    .search button {
+        position: absolute;
+        right: 20px;
+        bottom: -10px;
+    }
+
+    .dropdown {
+        position: absolute;
+        display: inline-block;
+        left: 20px;
+        top: 35px;
+    }
+
+    /* Content styles */
+
+    section {
+        min-height: 525px;
+        text-align: center;
+    }
+
+    /* *** EDIT PROFILE PAGE *** */
+
+    .upload-pro {
+        padding: 40px;
+        color: white;
+    }
+
+    .upload-pro h1 {
+        text-align: center;
+    }
+
+    .upload-pro .row {
+        padding: 20px;
+    }
+
+    .input-edit {
+        background-color: rgb(238, 237, 237);
+        color: black;
+    }
+
+    .update-pro {
+        width: 90%;
+        margin: 20px;
+    }
+
+    .add-pro-pic {
+        margin-top: 40px;
+    }
+
+    .delete-pro {
+        margin-top: 40px;
+    }
+
+    /* *** MY EVENTS PAGE *** */
+
+    /* *** Events display styles *** */
+
+    .top-container {
+        padding-top: 20px;
+    }
+
+    .centered {
+        display: block;
+        align-self: center;
+        margin: 0 auto;
+        max-width: 820px;
+        height: 325px;
+    }
+
+    .centered p {
+        margin: 0;
+        position: relative;
+    }
+
+    .event_image {
+        height: 152px;
+        vertical-align: bottom;
+    }
+
+    #buy {
+        margin-top: 10px;
+    }
+
+    .overflow {
+        max-height: 24px;
+        overflow: hidden;
+    }
+    hr {
+        border-style: dotted none none;
+        border-width: 4px;
+        border-color: silver;
+        width: 40%;
+    }
+
+    .empty {
+        text-align: center;
+        color: white;
+        padding-top: 200px;
+    }
+
+    .remove {
+        position: absolute;
+        /* margin-left: 35%; */
+        right: 10px;
+        top: 10px;
+
+    }
+
 }
 
-.upload-pro h1 {
-    text-align: center;
+@media only screen and (min-width: 481px) {
+    /* *** REGISTRATION AND LOGIN PAGE *** */
+
+    /* *** Advertisement poster styles *** */
+    .bck_img {
+        background: url("../images/login_img.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 650px;
+        margin: 20px 0;
+        text-align: center;
+        padding-top: 200px;
+        color: white;
+    }
+
+    .bck_img h1 {
+        font-size: 2.5rem;
+        font-weight: 900;
+    }
+
+    .bck_img p {
+        font-size: 1.5rem;
+    }
+
+    /* *** Card styles *** */
+
+    .card-rl p {
+        font-size: 1.5rem;
+    }
+
+    .icon-rl {
+        height: 110px;
+        display: block;
+        margin: auto;
+    }
+
+    /* *** Registration and login forms *** */
+
+    .reg-log {
+        color: white;
+        padding-top: 5px;
+        background-color: black;
+        margin-bottom: 40px;
+    }
+
+    .login,
+    .regis {
+        /* margin: 30px, 20px; */
+        margin-right: 20px;
+        margin-left: 20px;
+        width: 90%;
+        margin-top: 30px;
+    }
+
+    /* *** EDIT PROFILE PAGE *** */
+
+    .upload-pro {
+        padding: 40px;
+        color: white;
+    }
+
+    .upload-pro h1 {
+        text-align: center;
+    }
+
+    .upload-pro .row {
+        padding: 20px;
+    }
+
+    .input-edit {
+        background-color: rgb(238, 237, 237);
+        color: black;
+    }
+
+    .update-pro {
+        margin: 20px;
+        width: 90%;
+    }
+
+    .add-pro-pic {
+        margin-top: 40px;
+    }
+
+    .delete-pro {
+        margin-top: 40px;
+    }
+
+    /* *** MY EVENTS PAGE *** */
+
+    /* *** Events display styles *** */
+
+    .top-container {
+        padding-top: 20px;
+    }
+
+    .centered {
+        display: block;
+        align-self: center;
+        margin: 0 auto;
+        max-width: 820px;
+        height: 325px;
+    }
+
+    .centered p {
+        margin: 0;
+        position: relative;
+    }
+
+    .event_image {
+        height: 152px;
+        vertical-align: bottom;
+    }
+
+    #buy {
+        margin-top: 10px;
+    }
+
+    .overflow {
+        max-height: 24px;
+        overflow: hidden;
+    }
+    hr {
+        border-style: dotted none none;
+        border-width: 4px;
+        border-color: silver;
+        width: 40%;
+    }
+
+    .empty {
+        text-align: center;
+        color: white;
+        padding-top: 200px;
+    }
+
+    .remove {
+        position: absolute;
+        /* margin-left: 35%; */
+        right: 10px;
+        top: 10px;
+
+    }
+}
+@media only screen and (min-width: 767px) {
+    .centered {
+        display: block;
+        align-self: center;
+        margin: 0 auto;
+        max-width: 820px;
+        height: 160px;
+    }
 }
 
-.upload-pro .row {
-    padding: 20px;
-}
+@media only screen and (min-width: 1024px) {
 
-.input-edit {
-    background-color: rgb(238, 237, 237);
-    color: black;
-}
+    /* *** REGISTRATION AND LOGIN PAGE *** */
 
-.update-pro {
-    margin: 20px 40px;
-}
+    /* *** Advertisement poster styles *** */
 
-.add-pro-pic {
-    margin-top: 40px;
-}
+    .bck_img {
+        background: url("../images/login_img.jpg");
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 650px;
+        margin: 20px 0;
+        text-align: center;
+        padding-top: 250px;
+        color: white;
+    }
 
-.delete-pro {
-    margin-top: 40px;
-}
+    .bck_img h1 {
+        font-size: 60px;
+        font-weight: 900;
+    }
 
-/* *** MY EVENTS PAGE *** */
+    .bck_img p {
+        font-size: 30px;
+    }
 
-/* *** Events display styles *** */
+    /* *** Card styles *** */
 
-.top-container  {
-    padding-top: 20px;
-}
+    .cards-container {
+        background-color: white;
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
 
-.centered {
-    display: block;
-    align-self: center;
-    margin: 0 auto;
-    max-width: 820px;
-    height: 155px;
-}
-.event_image {
-    height: 152px;
-    vertical-align: bottom;
-}
+    .card-rl {
+        border: none;
+        text-align: center;
+    }
 
-.overflow {
-     max-height: 24px;
-    overflow: hidden;
-}
-hr {
-    border-style: dotted none none;
-    border-width: 4px;
-    border-color: silver;
-    width: 40%;
-}
+    .card-rl p {
+        font-size: 25px;
+        color: gray;
+    }
 
-.empty {
-    text-align: center;
-    color: white;
-    padding-top: 200px;
-}
+    .icon-rl {
+        height: 130px;
+        display: block;
+        margin: auto;
+    }
 
-.remove {
-    margin-left: 35%;
+    /* *** Registration and login forms *** */
+
+    .reg-log {
+        /* padding-left: 210px; */
+        color: white;
+        padding-top: 50px;
+        background-color: black;
+        margin-bottom: 80px;
+    }
+
+    .regis {
+        margin-right: 130px;
+        width: 45%;
+    }
+
+    .login {
+        width: 35%;
+    }
+
+    /* *** HOME PAGE *** */
+    section {
+        min-height: 760px;
+    }
+
+    .concerts {
+        display: inline-block;
+        width: 260px;
+        margin: 15px 10px 0 7px;
+        height: 350px;
+        vertical-align: top;
+        position: relative;
+        background-color: whitesmoke;
+    }
+
+    .concerts img {
+        height: 150px;
+        background-color: black;
+        border-radius: 5px;
+        border: 1px solid white;
+
+    }
+    .card-title {
+        font-weight: 700;
+    }
+    .concerts p {
+        margin: 0;
+        padding: 0;
+        font-size: 16px;
+    }
+
+    .concerts form {
+        margin-top: 5px;
+    }
+
+    .concerts .btn-interes {
+        position: absolute;
+        bottom: 10px;
+        left: 80px;
+    }
+
+    .concerts .m-info {
+        position: absolute;
+        bottom: 15px;
+        left: 15px;
+    }
+
+    .check {
+        font-weight: 900;
+        color: green;
+    }
+    /* jquery button class */
+
+    .added {
+        background-color: gray;
+    }
+
+    /* *** EDIT PROFILE PAGE *** */
+
+    .upload-pro {
+        padding: 40px;
+        color: white;
+    }
+
+    .upload-pro h1 {
+        text-align: center;
+    }
+
+    .upload-pro .row {
+        padding: 20px;
+    }
+
+    .input-edit {
+        background-color: rgb(238, 237, 237);
+        color: black;
+    }
+
+    .update-pro {
+        margin: 20px 40px;
+        width: 40%;
+    }
+
+    .add-pro-pic {
+        margin-top: 40px;
+    }
+
+    .delete-pro {
+        margin-top: 40px;
+    }
+
+    /* *** MY EVENTS PAGE *** */
+
+    /* *** Events display styles *** */
+
+    .top-container {
+        padding-top: 20px;
+    }
+
+    .centered {
+        display: block;
+        align-self: center;
+        margin: 0 auto;
+        max-width: 820px;
+        height: 155px;
+    }
+
+    .centered p {
+        margin: 0;
+        position: relative;
+    }
+
+    .event_image {
+        height: 152px;
+        vertical-align: bottom;
+    }
+
+    #buy {
+        margin-top: 10px;
+    }
+
+    .overflow {
+        max-height: 24px;
+        overflow: hidden;
+    }
+    hr {
+        border-style: dotted none none;
+        border-width: 4px;
+        border-color: silver;
+        width: 40%;
+    }
+
+    .empty {
+        text-align: center;
+        color: white;
+        padding-top: 200px;
+    }
+
+    .remove {
+        position: absolute;
+        /* margin-left: 35%; */
+        right: 10px;
+        top: 10px;
+
+    }
 }

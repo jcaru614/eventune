@@ -2,7 +2,6 @@ from django.shortcuts import render, HttpResponse, redirect
 from django.contrib import messages
 from django.http import JsonResponse
 from django.core import serializers
-
 from .models import *
 import bcrypt
 import json
@@ -11,6 +10,14 @@ def index(request):
     if 'user_id' in request.session:
         return redirect('/home')
     return render(request, 'index.html')
+
+def home(request):
+    if 'user_id' in request.session:
+        context = {
+            'user': User.objects.get(id=request.session['user_id'])
+        }
+        return render(request, 'home.html', context)
+    return redirect('/')
 
 def registration(request):
     errors = User.objects.basic_validator(request.POST)
@@ -21,13 +28,14 @@ def registration(request):
     email_db = User.objects.filter(email=email)
     if len(email_db) > 0:
         messages.error(request, "An Eventue user with this email already exists")
+        return redirect('/')
     else:
         password = request.POST['password']
         pw_hash = bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
         new_user = User.objects.create(f_name=request.POST['f_name'], l_name=request.POST['l_name'], email=request.POST['email'], password=pw_hash, city=request.POST['city'])
         user_id = new_user.id
         request.session['user_id'] = user_id
-    return redirect('/')
+        return redirect('/home')
     
 def login(request):
     user = User.objects.filter(email=request.POST['email'])
@@ -35,6 +43,7 @@ def login(request):
         existing_user = user[0]
         if bcrypt.checkpw(request.POST['password'].encode(), existing_user.password.encode()):
             request.session['user_id'] = existing_user.id
+            return redirect('/home')
     messages.error(request,'passwords dont match or invalid email!')
     return redirect('/')
 
@@ -43,18 +52,11 @@ def logout(request):
         del request.session['user_id']
     return redirect('/')
 
-def delete_account(request, id):
-    if 'user_id' in request.session:
-        d = User.objects.get(id=id)
-        d.delete()
+def delete_account(request):
+    d = User.objects.get(id=request.session['user_id'])
+    d.delete()
+    del request.session['user_id']
     return redirect('/')
-
-def home(request):
-    if 'user_id' in request.session:
-        context = {
-            'user': User.objects.get(id=request.session['user_id'])
-        }
-    return render(request, 'home.html', context)
 
 def profile(request, id):
     if 'user_id' in request.session:
@@ -135,9 +137,8 @@ def remove_event(request, id):
         return redirect('/myevents')
     return redirect('/')
 
-def petetest(request):
+def refresh_data(request):
     qs = User.objects.get(id=request.session['user_id']).events.all()
     qs_json = serializers.serialize('json', qs)
-
     return JsonResponse(qs_json, safe=False)
 
