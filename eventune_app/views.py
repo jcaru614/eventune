@@ -24,10 +24,11 @@ def registration(request):
     if len(errors) > 0:
         for key, value in errors.items():
             messages.error(request, value)
+        return redirect('/')
     email = request.POST['email']
     email_db = User.objects.filter(email=email)
     if len(email_db) > 0:
-        messages.error(request, "An Eventue user with this email already exists")
+        messages.error(request, "An Eventune user with this email already exists")
         return redirect('/')
     else:
         password = request.POST['password']
