@@ -1,7 +1,9 @@
 $(document).ready(function () {
     var city = $('#city').val(); // variable to use in on home page
     var whichOne = 0;
-
+    //************************* add api key *************************
+    const apikey = ''
+    
     // creating a function called content to reuse in home page and in search 
     function content(json) {
         // console.log(json)
@@ -58,7 +60,7 @@ $(document).ready(function () {
         } else {
             $.ajax({
                 type: "GET",
-                url: "https://app.ticketmaster.com/discovery/v2/events.json?size=16&city=" + city + "&apikey=V39QrEGIiAS8Nin2Zy3pJU8nJBNoiFNm",
+                url: "https://app.ticketmaster.com/discovery/v2/events.json?size=16&city=" + city + "&" + apikey,
                 async: true,
                 dataType: "json",
                 success: content,
@@ -70,7 +72,7 @@ $(document).ready(function () {
     // display initial content on home
     $.ajax({
         type: "GET",
-        url: "https://app.ticketmaster.com/discovery/v2/events.json?size=16&city=" + city + "&apikey=V39QrEGIiAS8Nin2Zy3pJU8nJBNoiFNm",
+        url: "https://app.ticketmaster.com/discovery/v2/events.json?size=16&city=" + city + "&" + apikey,
         async: true,
         dataType: "json",
         success: function (data) {
@@ -85,7 +87,7 @@ $(document).ready(function () {
     $('.search').submit(function (e) {
         e.preventDefault();
         var keyword = $('#searchparam').val();
-        $.get("https://app.ticketmaster.com/discovery/v2/events.json?&keyword=" + keyword + "&apikey=V39QrEGIiAS8Nin2Zy3pJU8nJBNoiFNm", function (data) {
+        $.get("https://app.ticketmaster.com/discovery/v2/events.json?&keyword=" + keyword + "&" + apikey, function (data) {
             whichOne = 1;
             content(data);
         })
