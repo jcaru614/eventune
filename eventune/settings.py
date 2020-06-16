@@ -76,15 +76,27 @@ WSGI_APPLICATION = 'eventune.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'eventune',
-        'USER': 'root',
-        # *********** add your own password ***********
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'eppbvuiq',
+        'USER': 'eppbvuiq',
+        'PASSWORD': 'eNfwlqQBFGzqIwbPmUbIgcb5y6PlWi0I',
+        'HOST': 'ruby.db.elephantsql.com',
+        'PORT': '5432',
     }
 }
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'eventune',
+#         'USER': 'root',
+#         # *********** add your own password ***********
+#         'PASSWORD': '',
+#         'HOST': 'localhost',
+#         'PORT': '3306',
+#     }
+# }
 
 
 # Password validation
@@ -124,3 +136,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# # Configure Django App for Heroku.
+# import django_heroku
+# django_heroku.settings(locals())
