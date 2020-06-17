@@ -80,7 +80,7 @@ DATABASES = {
         'NAME': 'eventune',
         'USER': 'root',
         # *********** add your own password ***********
-        'PASSWORD': '',
+        'PASSWORD': 'root',
         'HOST': 'localhost',
         'PORT': '3306',
     }
