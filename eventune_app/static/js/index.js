@@ -2,7 +2,7 @@ $(document).ready(function () {
     var city = $('#city').val(); // variable to use in on home page
     var whichOne = 0;
     //************************* add api key *************************
-    const apikey = "apikey=V39QrEGIiAS8Nin2Zy3pJU8nJBNoiFNm";
+    const apikey = "";
     
     // creating a function called content to reuse in home page and in search 
     function content(json) {
