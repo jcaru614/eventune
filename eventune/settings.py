@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 import psycopg2
+import django_heroku
+import dj_database_url
 
 DATABASE_URL = os.environ['DATABASE_URL']
 
@@ -140,12 +142,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 
 # Configure Django App for Heroku.
-# import django_heroku
-# django_heroku.settings(locals())
+django_heroku.settings(locals())
 
-import dj_database_url
+#This will parse the values of the DATABASE_URL environment variable and convert them to something Django can understand.
 DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
