@@ -76,25 +76,24 @@ WSGI_APPLICATION = 'eventune.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'eppbvuiq',
-        'USER': 'eppbvuiq',
-        'PASSWORD': 'eNfwlqQBFGzqIwbPmUbIgcb5y6PlWi0I',
-        'HOST': 'ruby.db.elephantsql.com',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'eventune',
+        'USER': 'root',
+        # *********** add your own password ***********
+        'PASSWORD': '',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
-
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'eventune',
-#         'USER': 'root',
-#         # *********** add your own password ***********
-#         'PASSWORD': '',
-#         'HOST': 'localhost',
-#         'PORT': '3306',
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'eppbvuiq',
+#         'USER': 'eppbvuiq',
+#         'PASSWORD': 'eNfwlqQBFGzqIwbPmUbIgcb5y6PlWi0I',
+#         'HOST': 'ruby.db.elephantsql.com',
+#         'PORT': '5432',
 #     }
 # }
 
